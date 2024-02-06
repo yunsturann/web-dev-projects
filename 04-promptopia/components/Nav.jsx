@@ -13,6 +13,7 @@ const Nav = () => {
   useEffect(() => {
     const fetchProviders = async () => {
       const response = await getProviders();
+
       setProviders(response);
     };
     fetchProviders();
@@ -28,7 +29,7 @@ const Nav = () => {
           height={30}
           className="object-contain"
         />
-        <p className="logo_text">Promptopia</p>
+        <p className="logo_text ">Promptopia</p>
       </Link>
 
       {/*Desktop Navigation */}
@@ -74,7 +75,7 @@ const Nav = () => {
       <div className="sm:hidden flex relative cursor-pointer">
         {session?.user ? (
           // if user signed in show dropdown
-          <div className="flex">
+          <div className="flex ">
             <Image
               src={session?.user.image}
               width={37}
