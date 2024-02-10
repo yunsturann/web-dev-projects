@@ -27,3 +27,14 @@ Includes clone projects &amp; different projects to learn new perspectives and l
 - Partial rendering
 - make another component to render cards in the first page(8 cards in the page.jsx) on the server side. others are in the client side (_tested_). <span style="color:blue">export MotionDiv = motion.div</span>.
 - Lastly, <span style="color:blue">line-clamp-1 </span>is a beneficial tailwind class
+
+## 04-promptopia
+
+## 05-hookform-zod
+
+- I grasped the purpose of hookform, zod & when it is required.
+- it handles lots of useful functionalities such as isSubmitting, errors, resetting form and submitting without preventDefault.
+- schema and its type should be decleared for type safety.
+- input validation can be handled in the schema.
+  - z.object({ email: z.string().email().min(3,"email must be at least 3 character!"),})
+- also zod can be used to check server errors.
