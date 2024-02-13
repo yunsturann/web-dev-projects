@@ -1,0 +1,21 @@
+.container {
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-weight: bold;
+}
+
+.text {
+  font-size: 14px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.text:hover {
+  color: blue;
+  transition: 0.3s;
+}
