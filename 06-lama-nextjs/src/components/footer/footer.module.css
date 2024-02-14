@@ -7,6 +7,7 @@
 
 .logo {
   font-weight: bold;
+  color: rgb(173, 173, 173);
 }
 
 .text {
@@ -18,4 +19,13 @@
 .text:hover {
   color: blue;
   transition: 0.3s;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    align-self: center;
+    justify-content: space-around;
+    height: 80px;
+  }
 }

@@ -52,3 +52,22 @@
   flex: 1;
   position: relative;
 }
+
+@media (max-width: 1024px) {
+  .container {
+    flex-direction: column;
+    gap: 0px;
+    text-align: center;
+  }
+  .buttons {
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .title {
+    font-size: 60px;
+  }
+  .brands {
+    width: 100%;
+  }
+}

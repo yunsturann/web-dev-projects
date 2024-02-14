@@ -1,0 +1,47 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+}
+
+.imgContainer {
+  width: 90%;
+  height: 400px;
+  position: relative;
+}
+
+.img {
+  object-fit: cover;
+}
+
+.date {
+  font-size: 12px;
+  transform: rotate(-90deg);
+}
+
+.title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  width: 85%;
+}
+
+.desc {
+  margin-bottom: 10px;
+  font-weight: 300;
+  color: gray;
+  width: 85%;
+}
+
+.link {
+  text-decoration: underline;
+  transition: 0.3s ease;
+}
+
+.link:hover {
+  color: var(--btnHover);
+}

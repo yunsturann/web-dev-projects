@@ -22,15 +22,17 @@
   }
   .menuButton {
     display: block;
-    font-size: 20px;
+    outline: none;
+    border: none;
+    background-color: transparent;
     cursor: pointer;
-    font-weight: bold;
   }
   .mobileLinks {
     position: absolute;
     top: 100px;
     right: 0;
-    /* background-color: purple; */
+    background-color: var(--bg);
+    /* opacity: 0.95; */
     width: 50%;
     height: calc(100vh - 100px);
     display: flex;
@@ -38,5 +40,6 @@
     align-items: center;
     justify-content: center;
     gap: 10px;
+    z-index: 100;
   }
 }
