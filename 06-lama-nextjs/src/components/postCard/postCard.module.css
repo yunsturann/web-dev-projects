@@ -20,8 +20,11 @@
 }
 
 .date {
+  width: 10%;
   font-size: 12px;
   transform: rotate(-90deg);
+  text-wrap: nowrap;
+  letter-spacing: 2px;
 }
 
 .title {

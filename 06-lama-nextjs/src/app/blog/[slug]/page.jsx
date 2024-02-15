@@ -1,50 +1,56 @@
 import Image from "next/image";
 import styles from "./singlePost.module.css";
+import PostUser from "@/components/postUser/PostUser";
+import { Suspense } from "react";
+// import { getSinglePost } from "@/lib/data";
 
-const SinglePostPage = () => {
+export const generateMetadata = async ({ params }) => {
+  const { slug } = params;
+  const post = await getSinglePost(slug);
+  return {
+    title: post.title,
+    description: post.desc,
+  };
+};
+
+const getSinglePost = async (slug) => {
+  const res = await fetch(`http://localhost:3000/api/blog/${slug}`);
+  if (!res.ok) throw new Error("Failed to fetch post");
+  return res.json();
+};
+
+const SinglePostPage = async ({ params }) => {
+  const { slug } = params;
+  const post = await getSinglePost(slug);
+  // const post = await getSinglePost(slug);
+
   return (
     <div className={styles.container}>
       {/* Left section */}
-      <div className={styles.imgContainer}>
-        <Image
-          src="https://images.pexels.com/photos/20145983/pexels-photo-20145983/free-photo-of-isik-gokyuzu-hava-uzay.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-          alt="Post image"
-          fill
-          className={styles.img}
-        />
-      </div>
+      {post.img && (
+        <div className={styles.imgContainer}>
+          <Image src={post.img} alt="Post image" fill className={styles.img} />
+        </div>
+      )}
       {/* Right section */}
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>Title</h1>
+        <h1 className={styles.title}>{post.title}</h1>
         {/*Detail */}
         <div className={styles.detail}>
-          {/* Avatar */}
-          <Image
-            src="https://images.pexels.com/photos/20145983/pexels-photo-20145983/free-photo-of-isik-gokyuzu-hava-uzay.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt="Post image"
-            height={70}
-            width={70}
-            className={styles.avatar}
-          />
           {/* Author */}
-          <div className={styles.detailText}>
-            <span className={styles.detailTitle}>Author</span>
-            <span className={styles.detailValue}>Yunus Turan</span>
-          </div>
+          <Suspense fallback={<div>Loading...</div>}>
+            <PostUser userId={post.userId} />
+          </Suspense>
           {/* Publish Date */}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
-            <span className={styles.detailValue}>16.01.2002</span>
+            <span className={styles.detailValue}>
+              {post.createdAt.toString().slice(0, 10)}
+            </span>
           </div>
         </div>
         {/* Description */}
-        <p className={styles.content}>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta,
-          delectus unde? Esse hic porro dolorum laudantium nam illo earum,
-          repellendus labore vero, vel natus est? Architecto consectetur dolores
-          molestiae. Excepturi deleniti veritatis maxime provident ipsum
-          delectus omnis consequatur vel vero!
-        </p>
+        <p className={styles.content}>{post.desc}</p>
       </div>
     </div>
   );
