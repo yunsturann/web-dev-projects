@@ -25,7 +25,7 @@ const links = [
 ];
 
 const Links = ({ session }) => {
-  const isAdmin = true;
+  // const isAdmin = true;
   // console.log(session);
   const [show, setShow] = useState(false);
 
