@@ -9,6 +9,7 @@ import Link from "next/link";
 const LoginForm = () => {
   const router = useRouter();
   const [state, formAction] = useFormState(login, undefined);
+
   useEffect(() => {
     if (state?.success) {
       alert("You have been logged in successfully");

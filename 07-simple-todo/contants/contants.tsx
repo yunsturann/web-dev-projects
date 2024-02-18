@@ -8,6 +8,11 @@ export const navLinks: NavLink[] = [
   },
   {
     id: 1,
+    name: "todo",
+    path: "/addtodo",
+  },
+  {
+    id: 2,
     name: "profile",
     path: "/profile",
   },

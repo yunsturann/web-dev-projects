@@ -9,7 +9,7 @@ const SubmitButton = () => {
   return (
     <button
       type="submit"
-      className="w-full sm:w-1/5 p-2 bg-blue-400 uppercase max-sm:rounded-lg sm:rounded-r-lg"
+      className="w-full sm:w-1/5 p-2 bg-blue-400 uppercase max-sm:rounded-lg sm:rounded-r-lg disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 ease-in-out hover:bg-blue-500 focus:outline-none "
       disabled={status.pending}
     >
       {status.pending ? "Adding..." : "Add"}

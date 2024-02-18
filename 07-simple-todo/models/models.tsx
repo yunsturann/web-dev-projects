@@ -4,10 +4,19 @@ const userSchema = new Schema(
   {
     username: {
       type: String,
+      unique: true,
       required: true,
+      validate: {
+        validator: (v: string) => {
+          return /^[a-zA-Z0-9_]{5,}$/.test(v);
+        },
+        message: (props: any) =>
+          `Username should contain only letters, numbers, and underscores. Minimum 5 characters.`,
+      },
     },
     email: {
       type: String,
+      unique: true,
       required: true,
     },
     password: {
@@ -34,6 +43,11 @@ const todoSchema = new Schema(
     isDone: {
       type: Boolean,
       default: false,
+    },
+    user: {
+      type: Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
     },
   },
   { timestamps: true }

@@ -10,6 +10,7 @@ const RegisterForm = () => {
   const router = useRouter();
 
   const [state, formAction] = useFormState(register, undefined);
+
   useEffect(() => {
     if (state?.success) {
       router.push("/login");

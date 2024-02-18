@@ -1,15 +1,18 @@
 "use server";
-import { Todo } from "@/models/models";
+import { Todo, User } from "@/models/models";
 import { connectToDb } from "./database";
 import { revalidatePath } from "next/cache";
-import { ITodo } from "@/types/types";
+import { ITodo, TInitialState } from "@/types/types";
 import { InitialState } from "@/types/types";
+import bcrypt from "bcrypt";
 
 export async function addTodo(
   prevState: InitialState,
   formData: FormData
 ): Promise<InitialState> {
   const todo = formData.get("todo");
+  const userId = formData.get("userId");
+
   try {
     await connectToDb();
     // check if todo is already exists
@@ -18,7 +21,7 @@ export async function addTodo(
       return { success: false, message: "Todo already exists!" };
     }
     // create a todo
-    await Todo.create({ todo });
+    await Todo.create({ todo, user: userId });
     // revalidate the home page
     revalidatePath("/");
     return { success: true, message: "Todo added successfully!" };
@@ -40,7 +43,7 @@ export async function getTodos(): Promise<ITodo[]> {
   }
 }
 
-export async function deleteTodo(formData: FormData) {
+export async function deleteTodo(prevState: any, formData: FormData) {
   const id = formData.get("id");
   try {
     await connectToDb();
@@ -52,3 +55,69 @@ export async function deleteTodo(formData: FormData) {
     return { success: false, message: "Something went wrong!" };
   }
 }
+
+// for user
+
+export const registerUser = async (
+  prevState: TInitialState,
+  formData: FormData
+): Promise<any> => {
+  const { username, email, password, confirmPassword, image } =
+    Object.fromEntries(formData);
+
+  // check if password and confirmPassword are the same
+  if (password !== confirmPassword) {
+    return { error: "Passwords do not match!" };
+  }
+
+  try {
+    await connectToDb();
+    // check if username already exists
+    const isUsernameExists = await User.exists({ username });
+    if (isUsernameExists) {
+      return { error: "Username already exists!" };
+    }
+    // check if email already exists
+    const isEmailExists = await User.exists({ email });
+    if (isEmailExists) {
+      return { error: "Email already exists!" };
+    }
+    // hash the password
+    const salt = await bcrypt.genSalt(10);
+
+    const pass = password.toString();
+
+    const hashedPassword = await bcrypt.hash(pass, salt);
+
+    // create a user
+    await User.create({
+      username,
+      email,
+      password: hashedPassword,
+      img: image,
+    });
+
+    return { success: true };
+  } catch (error: any) {
+    console.log(error.message);
+    return { error: error.message.split(":")[2] || error.message };
+  }
+};
+
+export const loginUser = async (
+  prevState: TInitialState,
+  formData: FormData
+): Promise<TInitialState> => {
+  const { username, password } = Object.fromEntries(formData);
+
+  try {
+    // await signIn("credentials", { username, password });
+
+    return { success: true };
+  } catch (error: any) {
+    if (error.message.includes("CredentialsSignin")) {
+      return { error: "Invalid username or password" };
+    }
+    throw error;
+  }
+};

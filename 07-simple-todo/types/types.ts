@@ -19,3 +19,8 @@ export type InitialState = {
   success: boolean;
   message: string;
 };
+
+export type TInitialState = {
+  error?: string;
+  success?: boolean;
+};
