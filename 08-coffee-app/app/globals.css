@@ -1,0 +1,89 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Sriracha&family=Srisakdi:wght@400;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .heading_two {
+    @apply text-4xl lg:text-5xl font-semibold text-dark text-center tracking-wide;
+  }
+}
+
+:root {
+  /* --swiper-theme-color: #fff !important; */
+  --swiper-pagination-bullet-inactive-color: #fff !important;
+  --swiper-pagination-bullet-inactive-opacity: 0.7 !important;
+  --swiper-pagination-bullet-width: 12px !important;
+  --swiper-pagination-bullet-height: 12px !important;
+  /*
+  --swiper-pagination-color: var(--swiper-theme-color);
+  --swiper-pagination-bullet-size: 8px;
+  --swiper-pagination-bullet-width: 8px;
+  --swiper-pagination-bullet-height: 8px;
+  --swiper-pagination-bullet-inactive-color: #000;
+  --swiper-pagination-bullet-inactive-opacity: 0.2;
+  --swiper-pagination-bullet-opacity: 1;
+  --swiper-pagination-bullet-horizontal-gap: 4px;
+  --swiper-pagination-bullet-vertical-gap: 6px;
+  */
+}
+
+.swiper {
+  padding-bottom: 30px !important;
+}
+
+.navItem {
+  position: relative;
+}
+
+.navItem:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #000;
+  background: #fff;
+  transition: width 0.3s ease-in-out;
+}
+
+.navItem:hover::before {
+  width: 100%;
+}
+
+/* spin animation */
+
+/* @keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.spin {
+  animation: spin 40s linear infinite;
+} */
+
+/* zigzag animation */
+@keyframes zigzag {
+  0% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(40px);
+  }
+  75% {
+    transform: translateX(-40px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate_zigzag {
+  animation: zigzag 8s linear infinite;
+}
