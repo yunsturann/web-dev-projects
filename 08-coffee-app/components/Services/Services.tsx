@@ -4,7 +4,7 @@ import ServiceItem from "./ServiceItem";
 
 const Services = () => {
   return (
-    <section className="py-10 sm:py-14 ">
+    <section id="services" className="py-10 sm:py-14 ">
       <div className="container space-y-14">
         {/* title */}
         <header className="space-y-4">

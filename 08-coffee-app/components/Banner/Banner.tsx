@@ -5,7 +5,7 @@ import { GrSecure } from "react-icons/gr";
 
 const Banner = () => {
   return (
-    <section className="py-10 md:py-14 relative mb-60">
+    <section className="py-10 md:py-14 relative">
       {/* BACKGROUND */}
       <div className="absolute inset-0 ">
         <Image

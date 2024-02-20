@@ -30,9 +30,21 @@
 }
 
 .swiper {
-  padding-bottom: 30px !important;
 }
 
+#testimonials .swiper {
+  padding-bottom: 50px !important;
+}
+
+#testimonials .swiper-pagination-bullet {
+  background-color: gray !important;
+}
+
+#testimonials .swiper-pagination-bullet-active {
+  background-color: blue !important;
+}
+
+/* Nav Item */
 .navItem {
   position: relative;
 }

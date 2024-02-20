@@ -38,3 +38,20 @@ Includes clone projects &amp; different projects to learn new perspectives and l
 - input validation can be handled in the schema.
   - z.object({ email: z.string().email().min(3,"email must be at least 3 character!"),})
 - also zod can be used to check server errors.
+
+## 06-lama-next.js
+
+- This is my first project by using module.css. I followed LamaDev/youtube
+- Server Actions were used on Login, Register, Admin Panel Pages.
+- Auth-V5, protecting pages
+- Mongoose
+- Dynamic and Static Metadata.
+- Data mutation with actions. revalidatePath("/blog")
+
+## 08-coffee-app
+
+- I learned how to use AOS and SwiperJS.
+- I practiced typescript, tailwind and responsive design.
+- I made my reusable Button component with Typescript.
+- I practiced making animations while coding this application. Design is not mine but <b>codes are mine</b>. Design is from <span style="color:blue; font-weight:bold">Efe Görkem Ümit</span>. Thanks to him for this design and I learned how to use swiper and aos libraries. You can reach his youtube channel from link below.
+- [Click for His Channel](https://www.youtube.com/@EfeGorkemUmit)

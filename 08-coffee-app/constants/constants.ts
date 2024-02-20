@@ -3,7 +3,7 @@ import { GiFoodTruck } from "react-icons/gi";
 import { GrSecure } from "react-icons/gr";
 import { IoFastFood } from "react-icons/io5";
 
-export const menuDatas = [
+export const navDatas = [
   {
     id: 1,
     name: "Home",
@@ -121,5 +121,50 @@ export const coffeeTypes = [
     icon: GiFoodTruck,
     title: "Cold Coffee",
     bgColor: "rgb(147 197 253)",
+  },
+];
+
+export const testimonials = [
+  {
+    id: 0,
+    name: "Angelina Jolie",
+    text: "This is the best coffee I've ever tasted. I'm in love with",
+    img: "/images/person/1.jpg",
+  },
+  {
+    id: 1,
+    name: "Margor Robbie",
+    text: "I am coffee person and this coffee are the best one I've ever tasted",
+    img: "/images/person/2.jpg",
+  },
+  {
+    id: 2,
+    name: "Clark Kent",
+    text: "I'm Superman who is the most powerful one.",
+    img: "/images/person/3.jpg",
+  },
+  {
+    id: 3,
+    name: "Pelinsu",
+    text: "Here is a place where you can find the best coffee in the world.",
+    img: "/images/person/4.jpg",
+  },
+  {
+    id: 4,
+    name: "Gal Gadot",
+    text: "I came from Themyscira to drink this coffee. It's amazing.",
+    img: "/images/person/5.jpg",
+  },
+  {
+    id: 5,
+    name: "Arya Stark",
+    text: "I'm no one. I'm here to drink coffee. It's delicious.",
+    img: "/images/person/6.jpg",
+  },
+  {
+    id: 6,
+    name: "Bruce Wayne",
+    text: "I'm Batman. I hate from Joker",
+    img: "/images/person/7.jpg",
   },
 ];

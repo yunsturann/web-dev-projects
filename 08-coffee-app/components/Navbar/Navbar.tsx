@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { menuDatas } from "@/constants/constants";
+import { navDatas } from "@/constants/constants";
 import Image from "next/image";
 import NavbarItem from "./NavbarItem";
 import Button from "../Buttons/Button";
@@ -25,7 +25,7 @@ const Navbar: FC = () => {
           </Link>
           {/* Navigation */}
           <nav className="hidden lg:flex items-center gap-8 text-xl py-4">
-            {menuDatas.map((menu) => (
+            {navDatas.map((menu) => (
               <NavbarItem key={menu.id} {...menu} />
             ))}
           </nav>

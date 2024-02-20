@@ -10,7 +10,10 @@ import HeroItem from "./HeroItem";
 
 const Hero = () => {
   return (
-    <section className="min-h-[600px] bg-brandDark text-light flex justify-center items-center font-second2">
+    <section
+      id="hero"
+      className="min-h-[600px] bg-brandDark text-light flex justify-center items-center font-second2"
+    >
       <div className="container">
         <Swiper
           pagination={{
