@@ -49,6 +49,7 @@ const HeroItem: React.FC<HeroItemProps> = ({
             alt="slider-item"
             fill
             className="object-contain animate-spin-slower"
+            priority={true}
           />
           <p className="absolute top-0 left-0 bg-secondary p-4 rounded-xl bg-opacity-90 hover:bg-opacity-70 transition">
             {text1}

@@ -7,22 +7,22 @@ export const navDatas = [
   {
     id: 1,
     name: "Home",
-    link: "/#",
+    link: "/",
   },
   {
     id: 2,
     name: "Services",
-    link: "/services",
+    link: "#services",
   },
   {
     id: 3,
     name: "About",
-    link: "/about",
+    link: "/",
   },
   {
     id: 4,
     name: "Contact",
-    link: "/contact",
+    link: "/",
   },
 ];
 
