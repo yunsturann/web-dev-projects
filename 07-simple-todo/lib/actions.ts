@@ -5,6 +5,7 @@ import { revalidatePath } from "next/cache";
 import { ITodo, TInitialState } from "@/types/types";
 import { InitialState } from "@/types/types";
 import bcrypt from "bcrypt";
+import { signIn } from "./auth";
 
 export async function addTodo(
   prevState: InitialState,
@@ -111,7 +112,7 @@ export const loginUser = async (
   const { username, password } = Object.fromEntries(formData);
 
   try {
-    // await signIn("credentials", { username, password });
+    await signIn("credentials", { username, password });
 
     return { success: true };
   } catch (error: any) {
