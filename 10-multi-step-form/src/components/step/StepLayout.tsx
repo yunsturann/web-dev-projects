@@ -1,14 +1,14 @@
 import React, { ReactNode } from "react";
 import { stepItems } from "@/constants/constants";
 import {
-  StepContext,
-  StepContextType,
+  FormContext,
+  FormContextType,
   useContext,
-} from "@/contexts/StepContext";
+} from "@/contexts/FormContext";
 import Button, { buttonVariants } from "../ui/Button";
 
 const StepLayout = ({ children }: { children?: ReactNode }) => {
-  const { step, setStep } = useContext<StepContextType>(StepContext);
+  const { step, setStep } = useContext<FormContextType>(FormContext);
 
   const { title, desc } = stepItems[step - 1];
 
@@ -17,6 +17,7 @@ const StepLayout = ({ children }: { children?: ReactNode }) => {
 
   const handleNext = () => {
     if (isLastStep) {
+      setStep(5);
     } else {
       setStep(step + 1);
     }
@@ -29,7 +30,7 @@ const StepLayout = ({ children }: { children?: ReactNode }) => {
   };
 
   return (
-    <div className=" h-full w-[70%] px-24 py-4 flex justify-center items-center ">
+    <div className=" h-full w-full lg:w-[70%] px-24 py-4 flex justify-center items-center ">
       {/* CONTAINER*/}
       <div className=" w-full h-full  flex flex-col space-y-6">
         {/* HEADER */}
@@ -38,11 +39,11 @@ const StepLayout = ({ children }: { children?: ReactNode }) => {
           <p className="text-cool-gray font-semibold">{desc}</p>
         </header>
         {/* CONTENT */}
-        <div className="flex-1 ">{children}</div>
+        <div className="flex-1 pt-4">{children}</div>
 
         {/* FOOTER / BUTTONS */}
         <div className="flex items-center justify-between">
-          {/* BACK */}
+          {/* BACK BUTTON*/}
           {!isFirstStep && (
             <span
               onClick={handleBack}
@@ -54,7 +55,7 @@ const StepLayout = ({ children }: { children?: ReactNode }) => {
               Go Back
             </span>
           )}
-          {/* NEXT & CONFIRM */}
+          {/* NEXT & CONFIRM BUTTON */}
           <Button
             size="lg"
             onClick={handleNext}

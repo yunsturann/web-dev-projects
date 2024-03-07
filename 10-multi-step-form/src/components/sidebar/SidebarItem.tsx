@@ -25,7 +25,7 @@ const SideBarItem: React.FC<SideBarItemProps> = ({
       </div>
 
       {/* CONTENT */}
-      <div className="uppercase">
+      <div className="uppercase hidden lg:block">
         <h3 className="text-light-gray ">{title}</h3>
         <p className="font-semibold tracking-wider">{desc}</p>
       </div>
