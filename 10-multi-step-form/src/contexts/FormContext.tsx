@@ -13,6 +13,19 @@ export type FormContextType = {
   setActivePlanIndex: React.Dispatch<React.SetStateAction<number>>;
   selectedAddOns: TAddOnsItem[];
   setSelectedAddOns: React.Dispatch<React.SetStateAction<TAddOnsItem[]>>;
+  personalInfo: {
+    name: string;
+    email: string;
+    phone: string;
+  };
+  setPersonalInfo: React.Dispatch<
+    React.SetStateAction<{
+      name: string;
+      email: string;
+      phone: string;
+    }>
+  >;
+  resetAllForm: () => void;
 };
 
 export const FormContext = createContext<FormContextType>({
@@ -24,6 +37,13 @@ export const FormContext = createContext<FormContextType>({
   setActivePlanIndex: () => {},
   selectedAddOns: [],
   setSelectedAddOns: () => {},
+  personalInfo: {
+    name: "",
+    email: "",
+    phone: "",
+  },
+  setPersonalInfo: () => {},
+  resetAllForm: () => {},
 });
 
 export default function FormProvider({
@@ -31,10 +51,27 @@ export default function FormProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [step, setStep] = useState(3);
+  const [step, setStep] = useState(1);
   const [isMonthly, setIsMonthly] = useState(true);
   const [activePlanIndex, setActivePlanIndex] = useState(0);
   const [selectedAddOns, setSelectedAddOns] = useState<TAddOnsItem[]>([]);
+  const [personalInfo, setPersonalInfo] = useState({
+    name: "",
+    email: "",
+    phone: "",
+  });
+
+  const resetAllForm = () => {
+    setStep(1);
+    setIsMonthly(true);
+    setActivePlanIndex(0);
+    setSelectedAddOns([]);
+    setPersonalInfo({
+      name: "",
+      email: "",
+      phone: "",
+    });
+  };
 
   return (
     <FormContext.Provider
@@ -47,6 +84,9 @@ export default function FormProvider({
         setActivePlanIndex,
         selectedAddOns,
         setSelectedAddOns,
+        personalInfo,
+        setPersonalInfo,
+        resetAllForm,
       }}
     >
       {children}

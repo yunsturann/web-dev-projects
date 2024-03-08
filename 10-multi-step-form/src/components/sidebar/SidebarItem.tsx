@@ -17,11 +17,11 @@ const SideBarItem: React.FC<SideBarItemProps> = ({
     <div className="flex gap-x-4 ">
       {/* Circle / STEP NUMBER */}
       <div
-        className={`size-12 border rounded-full flex items-center justify-center ${
+        className={`size-10 sm:size-12 border rounded-full flex items-center justify-center ${
           isActive && "bg-light-blue border-light-blue text-marine-blue"
         }`}
       >
-        <span className="text-lg font-semibold">{id}</span>
+        <span className="text-base sm:text-lg font-semibold">{id}</span>
       </div>
 
       {/* CONTENT */}

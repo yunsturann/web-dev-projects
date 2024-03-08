@@ -24,46 +24,48 @@ const StepLayout = ({ children }: { children?: ReactNode }) => {
   };
   const handleBack = () => {
     if (isFirstStep) {
+      setStep(1); // not required but extra validation.
     } else {
       setStep(step - 1);
     }
   };
 
   return (
-    <div className=" h-full w-full lg:w-[70%] px-24 py-4 flex justify-center items-center ">
+    <div className=" h-full w-full lg:w-[70%] lg:px-24 py-2 sm:py-4 flex justify-center items-center">
       {/* CONTAINER*/}
-      <div className=" w-full h-full  flex flex-col space-y-6">
+      <div className=" w-full h-full  flex flex-col space-y-2 sm:space-y-6">
         {/* HEADER */}
-        <header>
+        <header className="space-y-1">
           <h1 className="text-marine-blue text-3xl font-bold">{title}</h1>
           <p className="text-cool-gray font-semibold">{desc}</p>
         </header>
         {/* CONTENT */}
         <div className="flex-1 pt-4">{children}</div>
-
-        {/* FOOTER / BUTTONS */}
-        <div className="flex items-center justify-between">
-          {/* BACK BUTTON*/}
-          {!isFirstStep && (
-            <span
-              onClick={handleBack}
-              className={buttonVariants({
-                variant: "outline",
-                className: "cursor-pointer",
-              })}
+        {isFirstStep ? null : (
+          /* FOOTER / BUTTONS */
+          <div className="flex items-center justify-between pt-2">
+            {/* BACK BUTTON*/}
+            {!isFirstStep && (
+              <span
+                onClick={handleBack}
+                className={buttonVariants({
+                  variant: "outline",
+                  className: "cursor-pointer",
+                })}
+              >
+                Go Back
+              </span>
+            )}
+            {/* NEXT & CONFIRM BUTTON */}
+            <Button
+              size="lg"
+              onClick={handleNext}
+              className="ml-auto bg-marine-blue hover:bg-purplish-blue"
             >
-              Go Back
-            </span>
-          )}
-          {/* NEXT & CONFIRM BUTTON */}
-          <Button
-            size="lg"
-            onClick={handleNext}
-            className="ml-auto bg-marine-blue hover:bg-purplish-blue"
-          >
-            {isLastStep ? "Confirm" : "Next Step"}
-          </Button>
-        </div>
+              {isLastStep ? "Confirm" : "Next Step"}
+            </Button>
+          </div>
+        )}
       </div>
     </div>
   );

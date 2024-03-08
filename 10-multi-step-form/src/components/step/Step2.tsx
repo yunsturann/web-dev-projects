@@ -10,9 +10,9 @@ const Step2 = () => {
     useContext<FormContextType>(FormContext);
 
   return (
-    <div className="h-full space-y-6">
+    <div className="h-full space-y-3 sm:space-y-6">
       {/* Pricing */}
-      <div className="flex justify-between gap-4 lg:gap-10">
+      <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-4 lg:gap-10">
         {pricingItems.map((item, index) => {
           const isActive = activePlanIndex === index;
           return (
@@ -30,9 +30,13 @@ const Step2 = () => {
       <div className="bg-slate-100 flex justify-center items-center gap-4 p-2 rounded-xl text-purplish-blue">
         <Button
           variant={isMonthly ? "default" : "outline"}
-          className={cn("border-pastel-blue focus:ring-0 font-medium ", {
-            "bg-purplish-blue hover:bg-purplish-blue/80 text-white": isMonthly,
-          })}
+          className={cn(
+            "border-pastel-blue focus:ring-0 font-medium max-sm:h-8",
+            {
+              "bg-purplish-blue hover:bg-purplish-blue/80 text-white":
+                isMonthly,
+            }
+          )}
           onClick={() => setIsMonthly(true)}
         >
           Monthly
@@ -40,7 +44,7 @@ const Step2 = () => {
         <Button
           variant={!isMonthly ? "default" : "outline"}
           className={cn(
-            "border-pastel-blue hover:bg-slate-200 focus:ring-0 font-medium",
+            "border-pastel-blue hover:bg-slate-200 focus:ring-0 font-medium max-sm:h-8",
             {
               "bg-purplish-blue hover:bg-purplish-blue/80 text-white":
                 !isMonthly,

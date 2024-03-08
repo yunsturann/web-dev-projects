@@ -28,7 +28,7 @@ const Step4 = () => {
   return (
     <div className="h-full ">
       {/* PLAN & ADD-ONS SECTION */}
-      <div className="bg-slate-100 p-6 rounded-lg">
+      <div className="bg-slate-100 p-4 sm:p-6 rounded-lg">
         {/* SELECTED PLAN */}
         <div className="flex items-center justify-between text-marine-blue">
           <div className="">
@@ -48,9 +48,9 @@ const Step4 = () => {
           </p>
         </div>
         {/* SEPARATOR */}
-        <hr className="h-0.5 bg-gray-300 my-4" />
+        <hr className="h-0.5 bg-gray-300 my-2 sm:my-4" />
         {/* ADD-ONS */}
-        <div className=" space-y-4">
+        <div className="space-y-2 sm:space-y-4">
           {selectedAddOns.map((addOn) => (
             <div key={addOn.id} className="flex justify-between items-center">
               <p className="text-gray-400">{addOn.title}</p>
@@ -65,7 +65,7 @@ const Step4 = () => {
         </div>
       </div>
       {/* TOTAL PRICE SECTION */}
-      <div className="flex justify-between items-center p-6">
+      <div className="flex justify-between items-center p-4 sm:p-6">
         <p className="text-gray-400">
           Total {isMonthly ? "(per month)" : "(per year)"}
         </p>

@@ -19,7 +19,7 @@ const PricingCard: FC<PricingCardProps> = ({
   return (
     <div
       className={cn(
-        "h-[230px] w-full max-w-[230px] border border-light-gray rounded-lg p-4 flex flex-col justify-between cursor-pointer shadow-sm transition duration-300",
+        "sm:h-[230px] w-full sm:max-w-[230px] border border-light-gray rounded-lg p-2 sm:p-4 flex sm:flex-col gap-x-4 sm:justify-between cursor-pointer shadow-sm transition duration-300",
         {
           "bg-magnolia": isActive,
           "border-purplish-blue": isActive,
@@ -31,11 +31,13 @@ const PricingCard: FC<PricingCardProps> = ({
 
       {/* CONTENT */}
       <div className="text-marine-blue">
-        <h3 className="font-semibold">{item.title}</h3>
-        <p className="text-cool-gray">
+        <h3 className="font-semibold ">{item.title}</h3>
+        <p className="text-cool-gray text-sm sm:text-base">
           ${isMonthly ? item.price.monthly + "/mo" : item.price.yearly + "/yr"}
         </p>
-        <p className=" text-purplish-blue">{!isMonthly && "2 months free"}</p>
+        <p className=" text-purplish-blue max-sm:text-xs">
+          {!isMonthly && "2 months free"}
+        </p>
       </div>
     </div>
   );

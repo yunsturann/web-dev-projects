@@ -55,3 +55,12 @@ Includes clone projects &amp; different projects to learn new perspectives and l
 - I made my reusable Button component with Typescript.
 - I practiced making animations while coding this application. Design is not mine but <b>codes are mine</b>. Design is from <span style="color:blue; font-weight:bold">Efe Görkem Ümit</span>. Thanks to him for this design and I learned how to use swiper and aos libraries. You can reach his youtube channel from link below.
 - [Click for His Channel](https://www.youtube.com/@EfeGorkemUmit)
+
+## 10-multi-step-form
+
+- [Design from frontendmentor.io](https://www.frontendmentor.io/challenges/multistep-form-YVAnSdqQBJ)
+- I learned new things about typescript. Also, I repeated my old knowledge.
+- I tried to practice typescript, hook-form + zod, useContext and reusable components.
+- To deal with the mobile responsiveness was so educative.
+- The design requires plenty of states to use them in another components. So that, state management was significant.
+- I was awared of the importance of redux. I don't know it now. But it might be pretty handy/useful to manage many states.

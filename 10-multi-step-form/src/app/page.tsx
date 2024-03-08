@@ -17,15 +17,17 @@ export default function Home() {
   const { step } = useContext<FormContextType>(FormContext);
 
   return (
-    <section className="w-full max-w-[375px] sm:max-w-[1440px] bg-white h-[75%] rounded-2xl p-8 flex flex-col lg:flex-row ">
-      <Sidebar step={step} />
+    <section className=" w-full sm:max-w-[1440px] bg-white sm:h-[75%] rounded-2xl p-4 sm:p-8 flex flex-col lg:flex-row ">
       {step > 0 && step < 5 && (
-        <StepLayout>
-          {step === 1 && <Step1 />}
-          {step === 2 && <Step2 />}
-          {step === 3 && <Step3 />}
-          {step === 4 && <Step4 />}
-        </StepLayout>
+        <>
+          <Sidebar step={step} />
+          <StepLayout>
+            {step === 1 && <Step1 />}
+            {step === 2 && <Step2 />}
+            {step === 3 && <Step3 />}
+            {step === 4 && <Step4 />}
+          </StepLayout>
+        </>
       )}
       {step === 5 && <StepConfirmed />}
     </section>

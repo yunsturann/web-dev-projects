@@ -18,7 +18,7 @@ const Step3 = () => {
   };
 
   return (
-    <div className="h-full space-y-5">
+    <div className="h-full space-y-3 sm:space-y-5">
       {addOnItems.map((item, index) => {
         const isSelected = selectedAddOns.includes(item);
         return (

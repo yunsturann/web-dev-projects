@@ -16,7 +16,10 @@ export default function RootLayout({
     <html lang="en">
       <FormProvider>
         <body className="font-ubuntu">
-          <main className="h-screen min-h-screen bg-light-gray flex flex-col items-center justify-center px-8 sm:px-12 ">
+          {/* BG OVERLAY */}
+          <div className="absolute h-full w-full bg-light-gray -z-10"></div>
+          {/* MAIN */}
+          <main className="sm:h-screen min-h-screen flex flex-col items-center justify-center px-4 sm:px-12 relative">
             {children}
           </main>
         </body>
