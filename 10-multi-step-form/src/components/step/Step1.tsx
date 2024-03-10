@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Button from "../ui/Button";
 import { TPersonalInfoSchema, personalInfoSchema } from "@/types/types";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { FormContext, FormContextType } from "@/contexts/FormContext";
+import { FormContext, FormContextType } from "@/context/FormContext";
 
 const Step1 = () => {
   const { setStep, personalInfo, setPersonalInfo } =

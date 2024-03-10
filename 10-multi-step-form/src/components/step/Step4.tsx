@@ -1,5 +1,5 @@
 import { pricingItems } from "@/constants/constants";
-import { FormContext, FormContextType } from "@/contexts/FormContext";
+import { FormContext, FormContextType } from "@/context/FormContext";
 import React, { useContext } from "react";
 
 const Step4 = () => {

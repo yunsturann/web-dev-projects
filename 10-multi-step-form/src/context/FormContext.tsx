@@ -28,6 +28,10 @@ export type FormContextType = {
   resetAllForm: () => void;
 };
 
+//////////////////////////////////////////////////////////////////////////////
+// export const FormContext = createContext<FormContextType | null>(null);
+//////////////////////////////////////////////////////////////////////////////
+
 export const FormContext = createContext<FormContextType>({
   step: 1, // default value not important
   setStep: () => {},
@@ -45,6 +49,10 @@ export const FormContext = createContext<FormContextType>({
   setPersonalInfo: () => {},
   resetAllForm: () => {},
 });
+
+//////////////////////////////////////////////////////////////////////////////
+// export const useGlobalContext = () => useContext(FormContext);
+//////////////////////////////////////////////////////////////////////////////
 
 export default function FormProvider({
   children,

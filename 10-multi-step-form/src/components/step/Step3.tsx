@@ -2,7 +2,7 @@ import { addOnItems } from "@/constants/constants";
 import React, { useContext } from "react";
 import AddOnsItem from "../AddOnsItem";
 import { TAddOnsItem } from "../../types/types";
-import { FormContext, FormContextType } from "@/contexts/FormContext";
+import { FormContext, FormContextType } from "@/context/FormContext";
 
 const Step3 = () => {
   const { selectedAddOns, setSelectedAddOns } =

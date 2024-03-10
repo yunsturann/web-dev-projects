@@ -3,11 +3,11 @@ import React, { useContext, useState } from "react";
 import PricingCard from "../PricingCard";
 import Button from "../ui/Button";
 import { cn } from "@/lib/utlis";
-import { FormContext, FormContextType } from "@/contexts/FormContext";
+import { FormContext, FormContextType } from "@/context/FormContext";
 
 const Step2 = () => {
   const { isMonthly, setIsMonthly, activePlanIndex, setActivePlanIndex } =
-    useContext<FormContextType>(FormContext);
+    useContext(FormContext) as FormContextType;
 
   return (
     <div className="h-full space-y-3 sm:space-y-6">

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import FormProvider from "@/contexts/FormContext";
+import FormProvider from "@/context/FormContext";
 
 export const metadata: Metadata = {
   title: "Create Next App",

@@ -2,7 +2,7 @@ import {
   FormContext,
   FormContextType,
   useContext,
-} from "@/contexts/FormContext";
+} from "@/context/FormContext";
 import Image from "next/image";
 import React from "react";
 import Button from "../ui/Button";

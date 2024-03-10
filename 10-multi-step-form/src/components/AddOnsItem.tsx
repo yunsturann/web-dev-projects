@@ -4,7 +4,7 @@ import {
   FormContext,
   FormContextType,
   useContext,
-} from "@/contexts/FormContext";
+} from "@/context/FormContext";
 import { cn } from "@/lib/utlis";
 
 interface AddOnsItemProps {

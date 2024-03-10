@@ -4,7 +4,7 @@ import {
   FormContext,
   FormContextType,
   useContext,
-} from "@/contexts/FormContext";
+} from "@/context/FormContext";
 import Button, { buttonVariants } from "../ui/Button";
 
 const StepLayout = ({ children }: { children?: ReactNode }) => {
