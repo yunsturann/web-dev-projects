@@ -5,14 +5,17 @@ import { revalidatePath } from "next/cache";
 import { ITodo, TInitialState } from "@/types/types";
 import { InitialState } from "@/types/types";
 import bcrypt from "bcrypt";
-import { signIn } from "./auth";
+import { getSession } from "./authActions";
 
 export async function addTodo(
   prevState: InitialState,
   formData: FormData
 ): Promise<InitialState> {
+  const session = await getSession();
+  if (!session.isLoggedIn)
+    return { success: false, message: "You are not logged in!" };
   const todo = formData.get("todo");
-  const userId = formData.get("userId");
+  const userId = session.userId;
 
   try {
     await connectToDb();
@@ -102,23 +105,5 @@ export const registerUser = async (
   } catch (error: any) {
     console.log(error.message);
     return { error: error.message.split(":")[2] || error.message };
-  }
-};
-
-export const loginUser = async (
-  prevState: TInitialState,
-  formData: FormData
-): Promise<TInitialState> => {
-  const { username, password } = Object.fromEntries(formData);
-
-  try {
-    await signIn("credentials", { username, password });
-
-    return { success: true };
-  } catch (error: any) {
-    if (error.message.includes("CredentialsSignin")) {
-      return { error: "Invalid username or password" };
-    }
-    throw error;
   }
 };

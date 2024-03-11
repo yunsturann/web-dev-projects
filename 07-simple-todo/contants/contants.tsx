@@ -16,10 +16,4 @@ export const navLinks: NavLink[] = [
     name: "profile",
     path: "/profile",
   },
-
-  {
-    id: 3,
-    name: "login",
-    path: "/login",
-  },
 ];

@@ -5,9 +5,10 @@ import Input from "../ui/Input";
 import { SubmitButton } from "../ui/SubmitButton";
 import { TInitialState } from "@/types/types";
 import { useFormState } from "react-dom";
-import { loginUser } from "@/lib/actions";
+
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { loginUser } from "@/lib/authActions";
 
 const initialState: TInitialState = {
   error: "",
