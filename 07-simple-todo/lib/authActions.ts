@@ -61,3 +61,13 @@ export const logout = async () => {
   session.destroy();
   redirect("/");
 };
+
+export const switchIsAdmin = async () => {
+  const session = await getSession();
+
+  const user = await User.findOne({ _id: session.userId });
+  user.isAdmin = !user.isAdmin;
+  session.isAdmin = user.isAdmin;
+  await user.save();
+  await session.save();
+};

@@ -6,6 +6,7 @@ import { ITodo, TInitialState } from "@/types/types";
 import { InitialState } from "@/types/types";
 import bcrypt from "bcrypt";
 import { getSession } from "./authActions";
+import { redirect } from "next/navigation";
 
 export async function addTodo(
   prevState: InitialState,
@@ -36,9 +37,13 @@ export async function addTodo(
 }
 
 export async function getTodos(): Promise<ITodo[]> {
+  const session = await getSession();
+  if (!session.isLoggedIn) {
+    redirect("/login");
+  }
   try {
     await connectToDb();
-    const todos: ITodo[] = await Todo.find();
+    const todos: ITodo[] = await Todo.find({ user: session.userId });
 
     return todos;
   } catch (error) {
@@ -47,12 +52,12 @@ export async function getTodos(): Promise<ITodo[]> {
   }
 }
 
-export async function deleteTodo(prevState: any, formData: FormData) {
+export async function deleteTodo(formData: FormData) {
   const id = formData.get("id");
   try {
     await connectToDb();
     await Todo.deleteOne({ _id: id });
-    revalidatePath("/");
+    revalidatePath("/addTodo");
     return { success: true, message: "Todo deleted successfully!" };
   } catch (error) {
     console.log(error);

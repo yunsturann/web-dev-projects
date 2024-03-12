@@ -1,8 +1,8 @@
 import AddTodo from "@/components/addTodo/AddTodo";
-import { ITodo } from "@/types/types";
 import { getTodos } from "@/lib/actions";
-import { FaEdit } from "react-icons/fa";
 import DeleteButton from "@/components/ui/DeleteButton";
+import EditButton from "@/components/ui/EditButton";
+import { ITodo } from "@/types/types";
 
 const AddTodoPage = async () => {
   const todos: ITodo[] = await getTodos();
@@ -32,7 +32,7 @@ const AddTodoPage = async () => {
               {todo.todo}
             </p>
             <div className="flex gap-2 sm:gap-3">
-              <FaEdit className="size-5 sm:size-6  hover:opacity-80 text-blue-300 cursor-pointer" />
+              <EditButton todo={JSON.stringify(todo)} />
               <DeleteButton id={todo._id.toString()} />
             </div>
           </div>
