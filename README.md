@@ -48,6 +48,10 @@ Includes clone projects &amp; different projects to learn new perspectives and l
 - Dynamic and Static Metadata.
 - Data mutation with actions. revalidatePath("/blog")
 
+## 07-lama-next.js
+
+- I made lots of tests in the project about typescript, reusable components, server actions and iron session.
+
 ## 08-coffee-app
 
 - I learned how to use AOS and SwiperJS.
@@ -63,4 +67,12 @@ Includes clone projects &amp; different projects to learn new perspectives and l
 - I tried to practice typescript, hook-form + zod, useContext and reusable components.
 - To deal with the mobile responsiveness was so educative.
 - The design requires plenty of states to use them in another components. So that, state management was significant.
-- I was awared of the importance of redux. I don't know it now. But it might be pretty handy/useful to manage many states.
+- I am aware of the importance of redux. I don't know it now. But it might be pretty handy/useful to manage many states.
+
+## 11-cookie session
+
+- To learn iron-session with typescript
+
+## 12-redux-nextjs
+
+- To learn how to use redux in the next.js project.
