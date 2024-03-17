@@ -65,6 +65,20 @@ export async function deleteTodo(formData: FormData) {
   }
 }
 
+// editTodo
+
+export async function editTodo(formData: FormData) {
+  const { id, newTodo } = Object.fromEntries(formData);
+
+  try {
+    await connectToDb();
+    await Todo.updateOne({ _id: id }, { todo: newTodo });
+    revalidatePath("/addTodo");
+  } catch (error) {
+    console.log(error);
+  }
+}
+
 // for user
 
 export const registerUser = async (

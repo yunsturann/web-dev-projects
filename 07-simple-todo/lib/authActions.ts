@@ -6,6 +6,7 @@ import { cookies } from "next/headers";
 import { User } from "@/models/models";
 import { redirect } from "next/navigation";
 import bcrypt from "bcrypt";
+import { connectToDb } from "./database";
 
 export const getSession = async () => {
   const session = await getIronSession<ISessionData>(cookies(), sessionOptions);
@@ -24,6 +25,7 @@ export const loginUser = async (
   const { username, password } = Object.fromEntries(formData);
 
   try {
+    await connectToDb();
     const user = await User.findOne({ username });
     // if user not found
     if (!user) {
