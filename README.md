@@ -76,3 +76,12 @@ Includes clone projects &amp; different projects to learn new perspectives and l
 ## 12-redux-nextjs
 
 - To learn how to use redux in the next.js project.
+
+## 13-imaginify
+
+## 14-interactive-card
+
+- [Design from frontendmentor.io](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw)
+- A project to use React-Hook-Form better
+- I used hookFormContext for the first time. It is beneficial to use.
+- watch is an another useful method to keep track of the values of inputs. It can be used with useEffect.

@@ -3,12 +3,13 @@ import React, { forwardRef } from "react";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
+  error?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, className, ...props }, ref) => {
+  ({ label, className, error, ...props }, ref) => {
     return (
-      <div className="flex flex-col gap-1">
+      <div className="flex flex-col gap-1 pb-5 relative">
         {label && (
           <label
             htmlFor=""
@@ -17,7 +18,14 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {label}
           </label>
         )}
-        <div className=" p-px rounded-lg focus-within:bg-gradient-to-r focus-within:from-gradient-1 focus-within:to-gradient-2 ">
+        <div
+          className={cn(
+            "p-px rounded-lg focus-within:bg-gradient-to-r focus-within:from-gradient-1 focus-within:to-gradient-2",
+            {
+              "bg-red-400": error,
+            }
+          )}
+        >
           <input
             ref={ref}
             className={cn(
@@ -27,6 +35,9 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
             {...props}
           />
         </div>
+        <p className="absolute -bottom-1 left-1 text-red-400 text-sm">
+          {error}
+        </p>
       </div>
     );
   }
