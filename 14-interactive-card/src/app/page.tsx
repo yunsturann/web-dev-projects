@@ -6,7 +6,7 @@ import Confirmed from "@/components/Confirmed";
 import { useState } from "react";
 
 export default function Home() {
-  const [isConfirmed, setIsConfirmed] = useState(true);
+  const [isConfirmed, setIsConfirmed] = useState(false);
 
   return (
     <main className="w-full h-full lg:h-[75vh] max-w-[1440px] flex flex-col lg:flex-row max-lg:gap-12 bg-white text-lg">
