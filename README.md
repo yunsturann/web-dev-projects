@@ -82,6 +82,24 @@ Includes clone projects &amp; different projects to learn new perspectives and l
 ## 14-interactive-card
 
 - [Design from frontendmentor.io](https://www.frontendmentor.io/challenges/interactive-card-details-form-XpS8cKZDWw)
-- A project to use React-Hook-Form better
+- A project to use React-Hook-Form in more efficient way.
 - I used hookFormContext for the first time. It is beneficial to use.
 - watch is an another useful method to keep track of the values of inputs. It can be used with useEffect.
+
+## 15-cookie-auth
+
+- To learn auth with cookies and middleware.
+- JWT token.
+
+## 16-swr-tutorial
+
+- To learn how to useSwr efficiently
+- The motivation of swr is grasped.
+- data fetched and mutated. Some cases such as isValidating, isLoading, error were handled.
+- custom hooks created to manage swr better with axios
+- Folder structure might be better. I am aware of it.
+
+## 17-landing-page
+
+- [Design from frontendmentor.io](https://www.frontendmentor.io/challenges/easybank-landing-page-WaUhkoDN)
+- I practiced responsive design with tailwind.

@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css2?family=Public+Sans:ital,wght@0,100..900;1,100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .heading_two {
+    @apply text-2xl sm:text-4xl text-dark-blue;
+  }
+  .gradient {
+    @apply bg-gradient-to-r from-lime-green to-blue-400;
+  }
+}
