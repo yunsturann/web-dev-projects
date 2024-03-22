@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .heading_one {
+    @apply text-2xl sm:text-3xl font-semibold text-center;
+  }
+}
