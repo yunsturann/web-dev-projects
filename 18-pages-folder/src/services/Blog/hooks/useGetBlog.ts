@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GetBlogResponse } from "../../Homepage/types/GetBlogResponse";
+import { GetBlogResponse } from "../types/GetBlogResponse";
 import useSWR from "swr";
 
 export default function useGetBlog(id: string) {

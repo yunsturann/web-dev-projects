@@ -31,7 +31,8 @@ const BlogUpdatePage = () => {
     };
 
     try {
-      await trigger(arg);
+      const res = await trigger(arg);
+      // console.log(res); {success: true}
       router.push("/");
     } catch (error) {
       alert("Failed to update blog");
