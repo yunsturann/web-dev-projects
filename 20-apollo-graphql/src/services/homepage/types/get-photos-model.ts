@@ -1,4 +1,4 @@
-export interface GetPhotoModel {
+export interface GetPhotosModel {
   photos: {
     id: string;
     description: string;

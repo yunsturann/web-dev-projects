@@ -1,9 +1,9 @@
 import { useQuery } from "@apollo/client";
 import { GET_PHOTOS } from "../queries/get-photos";
-import { GetPhotoModel } from "../types/get-photo-model";
+import { GetPhotosModel } from "../types/get-photos-model";
 
 export default function useGetPhotos() {
-  const { data, loading, error } = useQuery<GetPhotoModel>(GET_PHOTOS);
+  const { data, loading, error } = useQuery<GetPhotosModel>(GET_PHOTOS);
 
   return {
     data: data?.photos,

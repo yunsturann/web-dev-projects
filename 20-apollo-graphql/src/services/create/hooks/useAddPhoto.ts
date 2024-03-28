@@ -13,7 +13,7 @@ export default function useAddPhoto() {
 
   return {
     addPhoto,
-    data,
+    data: data?.insert_photos_one,
     error,
     loading,
   };
