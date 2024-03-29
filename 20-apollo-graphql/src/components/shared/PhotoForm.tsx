@@ -2,6 +2,7 @@ import { IPhotoForm } from "@/services/update/types/photo-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import React, { FC } from "react";
 import { UseFormReset, useForm } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 import * as yup from "yup";
 
 interface PhotoFormProps {
@@ -15,6 +16,7 @@ const schema = yup.object().shape({
 });
 
 const PhotoForm: FC<PhotoFormProps> = ({ initialData, onSubmit }) => {
+  const { t } = useTranslation();
   const {
     register,
     handleSubmit,
@@ -33,7 +35,7 @@ const PhotoForm: FC<PhotoFormProps> = ({ initialData, onSubmit }) => {
       >
         <input
           type="text"
-          placeholder="Photo Url..."
+          placeholder={t("formPlaceholder.photoUrl")}
           className="text-lg px-3 py-2"
           {...register("photoUrl")}
         />
@@ -42,7 +44,7 @@ const PhotoForm: FC<PhotoFormProps> = ({ initialData, onSubmit }) => {
         )}
         <input
           type="text"
-          placeholder="Description..."
+          placeholder={t("formPlaceholder.description")}
           className="text-lg px-3 py-2"
           {...register("description")}
         />
@@ -56,11 +58,11 @@ const PhotoForm: FC<PhotoFormProps> = ({ initialData, onSubmit }) => {
         >
           {initialData.description && initialData.photoUrl
             ? isSubmitting
-              ? "Updating..."
-              : "Update Photo"
+              ? t("submitBtn.isloading.edit")
+              : t("submitBtn.edit")
             : isSubmitting
-            ? "Adding..."
-            : "Add Photo"}
+            ? t("submitBtn.isloading.create")
+            : t("submitBtn.create")}
         </button>
       </form>
     </div>

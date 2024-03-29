@@ -4,8 +4,10 @@ import { useUpdatePhoto } from "@/services/update/hooks/useUpdatePhoto";
 import { IPhotoForm } from "@/services/update/types/photo-form";
 import { useRouter } from "next/router";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const UpdatePage = () => {
+  const { t } = useTranslation();
   const router = useRouter();
   const { id } = router.query;
   const { data, error, loading } = useGetPhoto(id as string);
@@ -37,7 +39,9 @@ const UpdatePage = () => {
 
   return (
     <div>
-      <h1 className="text-center py-4 font-semibold text-2xl">Update Page</h1>
+      <h1 className="text-center py-4 font-semibold text-2xl">
+        {t("pageTitles.edit")}
+      </h1>
       <PhotoForm
         initialData={{
           description: data.description,

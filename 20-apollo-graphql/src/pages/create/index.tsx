@@ -2,16 +2,25 @@ import PhotoForm from "@/components/shared/PhotoForm";
 import useAddPhoto from "@/services/create/hooks/useAddPhoto";
 import { IPhotoForm } from "@/services/update/types/photo-form";
 import React, { useState } from "react";
-import { UseFormReset, set } from "react-hook-form";
+import { UseFormReset } from "react-hook-form";
+import { useTranslation } from "react-i18next";
 
 const CreatePage = () => {
+  const { t } = useTranslation();
   const { addPhoto, data, error, loading } = useAddPhoto();
   const [message, setMessage] = useState<string>("");
 
-  const onSubmit = (data: IPhotoForm, reset?: UseFormReset<IPhotoForm>) => {
-    addPhoto({
-      variables: { photo_url: data.photoUrl, description: data.description },
-    });
+  const onSubmit = async (
+    data: IPhotoForm,
+    reset?: UseFormReset<IPhotoForm>
+  ) => {
+    try {
+      await addPhoto({
+        variables: { photo_url: data.photoUrl, description: data.description },
+      });
+    } catch (error: any) {
+      alert(error.message);
+    }
     reset && reset();
 
     setMessage("Photo added successfully");
@@ -23,7 +32,9 @@ const CreatePage = () => {
 
   return (
     <div>
-      <h1 className="text-center py-4 font-semibold text-2xl">CreatePage</h1>
+      <h1 className="text-center py-4 font-semibold text-2xl">
+        {t("pageTitles.create")}
+      </h1>
       <PhotoForm
         initialData={{ description: "", photoUrl: "" }}
         onSubmit={onSubmit}

@@ -103,3 +103,27 @@ Includes clone projects &amp; different projects to learn new perspectives and l
 
 - [Design from frontendmentor.io](https://www.frontendmentor.io/challenges/easybank-landing-page-WaUhkoDN)
 - I practiced responsive design with tailwind.
+
+## 18
+
+## 19
+
+## 20-apollo-graphql
+
+- A project to learn Hasura, GraphQL, ApolloClient and i18next
+- ApolloClient is used to fetch data from the server. It is a powerful tool to manage the data.
+- Folder structure
+  - services
+    - pageName
+      - hooks
+      - mutations
+      - queries
+      - types
+    - anotherPageName
+- For i18next, it should be initialized in the config file. Then, import it in the \_app.js file.
+- Then, use useTranslation hook in the components.
+  - const { t, i18n } = useTranslation();
+  - t("key")
+  - <b>t("welcome", { name: "Yunus" })</b> => interpolation is possible with this way.
+  - <b>i18n.changeLanguage("tr")</b> => to change the language
+  - i18n.language => to get the current language

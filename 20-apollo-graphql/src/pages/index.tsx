@@ -3,8 +3,10 @@ import useDeletePhotoById from "@/services/homepage/hooks/useDeletePhotoById";
 import useGetPhotos from "@/services/homepage/hooks/useGetPhotos";
 import Link from "next/link";
 import React from "react";
+import { useTranslation } from "react-i18next";
 
 const HomePage = () => {
+  const { t } = useTranslation();
   const { data, error, loading } = useGetPhotos();
   const { deletePhoto } = useDeletePhotoById();
 
@@ -12,14 +14,18 @@ const HomePage = () => {
 
   if (error) return <p>Error!</p>;
 
-  const handleDelete = (id: string) => {
-    deletePhoto({ variables: { id } });
+  const handleDelete = async (id: string) => {
+    try {
+      await deletePhoto({ variables: { id } });
+    } catch (error: any) {
+      alert(error.message);
+    }
   };
 
   return (
     <div className="pb-40">
       <h1 className="text-center py-4 font-semibold text-2xl">
-        First Apollo App
+        {t("pageTitles.home", { username: "Yunus" })}
       </h1>
       <ul className="w-1/2 space-y-4 mx-auto">
         {data?.map((photo) => (
@@ -35,7 +41,7 @@ const HomePage = () => {
             </header>
             <div className="space-x-3">
               <span className="text-red-500 cursor-pointer bg-gray-300 hover:opacity-80 p-3 transition duration-300">
-                <Link href={`/update/${photo.id}`}>Edit</Link>
+                <Link href={`/update/${photo.id}`}>{t("edit")}</Link>
               </span>
               <span
                 className="text-red-500 cursor-pointer bg-gray-300 hover:opacity-80 p-3 transition duration-300"
