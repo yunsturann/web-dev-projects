@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 
 interface ContainerProps extends React.HTMLAttributes<HTMLDivElement> {}
 

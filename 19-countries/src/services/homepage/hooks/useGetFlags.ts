@@ -1,5 +1,6 @@
 import axios from "axios";
 import useSWR from "swr";
+import { GetFlagModel } from "../types/GetFlagModel";
 
 export const useGetFlags = () => {
   const fetcher = async (url: string) => {
@@ -7,5 +8,5 @@ export const useGetFlags = () => {
     return res.data;
   };
 
-  return useSWR("/all", fetcher);
+  return useSWR<GetFlagModel[]>("/all", fetcher);
 };
