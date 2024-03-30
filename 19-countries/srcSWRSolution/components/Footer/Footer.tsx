@@ -7,7 +7,7 @@ const Footer = () => {
       <p className="text-center py-4 text-sm bg-white dark:bg-dark-blue-dm">
         created by{" "}
         <Link
-          href="https://yunsturann.vercel.app/"
+          href="https://yunsturann.vercel.app"
           className="text-very-dark-blue dark:text-white font-bold"
         >
           yunusturan

@@ -1,21 +1,15 @@
-import React from "react";
+import { GetFlagModel } from "@/services/homepage/types/GetFlagModel";
 import Image from "next/image";
-import { RootState } from "@/store";
-import { useSelector } from "react-redux";
+import React, { FC } from "react";
 
-const FlagList = () => {
-  const {
-    countries: data,
-    isError,
-    isLoading,
-  } = useSelector((state: RootState) => state.countries);
+interface FlagListProps {
+  flags: GetFlagModel[];
+}
 
-  if (isError) return <div>Error page</div>;
-  if (isLoading) return <div>Is Loading</div>;
-
+const FlagList: FC<FlagListProps> = ({ flags }) => {
   return (
     <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 lg:gap-12 pb-20">
-      {data.map((flag) => (
+      {flags.map((flag) => (
         // CARD
         <li
           key={flag.name.official}

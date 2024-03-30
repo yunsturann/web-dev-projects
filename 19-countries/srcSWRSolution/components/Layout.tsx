@@ -1,11 +1,8 @@
-import React, { ReactNode, useEffect } from "react";
+import React, { ReactNode } from "react";
 import { Nunito_Sans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import Navbar from "./Navbar/Navbar";
 import Footer from "./Footer/Footer";
-import { useDispatch } from "react-redux";
-import { fetchCountries } from "@/store/countries-store";
-import { AppDispatch } from "@/store";
 
 const nunitoSans = Nunito_Sans({
   subsets: ["latin"],
@@ -13,12 +10,6 @@ const nunitoSans = Nunito_Sans({
 });
 
 const Layout = ({ children }: { children: ReactNode }) => {
-  const dispatch = useDispatch<AppDispatch>();
-
-  useEffect(() => {
-    dispatch(fetchCountries());
-  }, [dispatch]);
-
   return (
     <ThemeProvider attribute="class">
       <main
