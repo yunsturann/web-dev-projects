@@ -4,15 +4,17 @@ import React from "react";
 // ** Custom Components
 import Container from "@/components/Container";
 import UserForm from "@/components/user-form/UserForm";
-import { IUser } from "@/types/UserType";
 
-const initialFormValues: IUser = {
+// ** Types
+import { UserTypeWithId } from "@/types/UserType";
+
+const initialFormValues: UserTypeWithId = {
   name: "",
   surname: "",
   email: "",
   address: "",
   city: "",
-  birthdate: new Date(),
+  birthdate: null,
   phone: "",
   gender: null,
 };

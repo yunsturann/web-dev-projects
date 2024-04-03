@@ -3,7 +3,7 @@ import mongoose, { Schema } from "mongoose";
 mongoose.connect(process.env.MONGODB_URL!);
 mongoose.Promise = global.Promise;
 
-const userSchmea = new Schema({
+const userSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -26,7 +26,7 @@ const userSchmea = new Schema({
     required: true,
   },
   birthdate: {
-    type: Date,
+    type: String,
     required: true,
   },
   phone: {
@@ -34,11 +34,11 @@ const userSchmea = new Schema({
     required: true,
   },
   gender: {
-    type: Boolean,
-    required: true,
+    type: String,
+    required: false,
   },
 });
 
-const User = mongoose.models.User || mongoose.model("User", userSchmea);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 export default User;

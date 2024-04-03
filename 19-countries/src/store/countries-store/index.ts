@@ -28,21 +28,21 @@ const countrySlice = createSlice({
   name: "countries",
   initialState,
   reducers: {
-    filterCountries: (state, { payload }: PayloadAction<string>) => {
-      if (payload === "all") {
-        state.countries = state.initialCountries;
-      } else {
-        state.countries = state.initialCountries.filter((country) =>
-          country.region.toLowerCase().includes(payload.toLowerCase())
-        );
-      }
-    },
     searchCountries: (state, action: PayloadAction<string>) => {
       state.countries = state.initialCountries.filter((country) =>
         country.name.official
           .toLowerCase()
           .includes(action.payload.toLowerCase())
       );
+    },
+    filterCountries: (state, action: PayloadAction<string>) => {
+      if (action.payload === "all") {
+        state.countries = state.initialCountries;
+      } else {
+        state.countries = state.initialCountries.filter(
+          (country) => country.region === action.payload
+        );
+      }
     },
   },
 
