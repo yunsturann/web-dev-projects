@@ -1,0 +1,31 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+h1 {
+  text-align: center;
+}
+
+.leaflet-container {
+  height: 90vh;
+}
+
+.custom-marker-cluster {
+  background-color: rgb(0, 123, 255, 0.9);
+  border-radius: 50%;
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px 0 rgb(76, 71, 141, 0.6);
+}
