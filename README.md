@@ -104,9 +104,16 @@ Includes clone projects &amp; different projects to learn new perspectives and l
 - [Design from frontendmentor.io](https://www.frontendmentor.io/challenges/easybank-landing-page-WaUhkoDN)
 - I practiced responsive design with tailwind.
 
-## 18
+## 18-pages-folder
 
-## 19
+- To learn how to use pages folder in the next.js project.
+- Also, I tried to set up a folder structure while using swr.
+
+## 19-countries
+
+- [Design from frontendmentor.io](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca)
+- to practice redux and swr
+- there are two solution to fetch data from the server. One of them is swr and the other is redux.
 
 ## 20-apollo-graphql
 
@@ -127,3 +134,25 @@ Includes clone projects &amp; different projects to learn new perspectives and l
   - <b>t("welcome", { name: "Yunus" })</b> => interpolation is possible with this way.
   - <b>i18n.changeLanguage("tr")</b> => to change the language
   - i18n.language => to get the current language
+
+## 21-material-ui
+
+- To learn how to use material-ui with lamadev/youtube
+
+## 22-redux-crud
+
+- To learn how to use redux with crud operations
+- Focus on the redux part of the project and how to manage the states.
+
+## 23-leaflet-map
+
+- I used the leaflet library to show the map on the screen.
+- Custom markers and Clusters were used to show the locations in the world.
+- libs such as react-leaflet, leaflet, leaflet.markercluster were used.
+
+## 24-file-upload-graphql
+
+- To learn how to upload and download files with graphql
+- I converted the file to base64 then stored in the db
+- I listed users with the @mui/x-data-grid lib and showed the files in the table.
+- In the actions column, I put the download button to download the file.
