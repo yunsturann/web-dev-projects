@@ -6,6 +6,15 @@ export const toBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
     reader.onerror = reject;
   });
 
+export const handleDownload = (base64Data: string, fileName: string) => {
+  const link = document.createElement("a");
+  link.href = base64Data;
+  link.download = fileName; // Dosyanın adını belirtin
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 // ** I dont need this function but I will keep it here for future reference
 
 // export function base64ToFile(dataurl: string, filename: string) {
@@ -25,12 +34,3 @@ export const toBase64 = (file: File): Promise<string | ArrayBuffer | null> =>
 //   }
 //   return new File([u8arr], filename, { type: mime });
 // }
-
-export const handleDownload = (base64Data: string, fileName: string) => {
-  const link = document.createElement("a");
-  link.href = base64Data;
-  link.download = fileName; // Dosyanın adını belirtin
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
