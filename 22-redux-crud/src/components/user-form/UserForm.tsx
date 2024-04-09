@@ -3,7 +3,7 @@ import React, { FC, useEffect } from "react";
 
 // ** Types & Schemas
 import { UserType, UserTypeWithId, userSchema } from "@/types/UserType";
-import { AppDispatch, RootState } from "../store";
+import { AppDispatch, RootState } from "../../store";
 
 // ** Custom Components
 import Input from "../ui/Input";
@@ -18,7 +18,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { postUser } from "../store/user-slice";
+import { postUser, updateUser } from "../../store/user-slice";
 
 // ** Utils
 // import { formatPhoneNumber } from "@/lib/utils";
@@ -55,7 +55,13 @@ const UserForm: FC<UserFormProps> = ({ initialData }) => {
 
   // ** Arrow functions
   const onSubmit = async (data: UserType) => {
-    dispatch(postUser(data));
+    if (EDIT_MODE) {
+      // update user
+      dispatch(updateUser({ ...data, _id: initialData._id }));
+    } else {
+      // create user
+      dispatch(postUser(data));
+    }
   };
 
   return (
@@ -107,6 +113,7 @@ const UserForm: FC<UserFormProps> = ({ initialData }) => {
             data={cities}
             label="City"
             required
+            defaultValue={initialData.city}
             error={errors.city?.message}
           />
 
@@ -165,7 +172,7 @@ const UserForm: FC<UserFormProps> = ({ initialData }) => {
           className="self-center sm:w-1/2 mt-4"
           disabled={isSubmitting}
         >
-          Submit
+          {EDIT_MODE ? "Update" : "Create"}
         </Button>
       </form>
     </div>

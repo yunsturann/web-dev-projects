@@ -2,13 +2,16 @@
 import React, { useEffect } from "react";
 
 // ** Redux
-import { AppDispatch, RootState } from "@/components/store";
+import { AppDispatch, RootState } from "@/store";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
-import { getUsers } from "@/components/store/user-slice";
+import { deleteUser, getUsers } from "@/store/user-slice";
+import Link from "next/link";
 
 const HomePage = () => {
-  const { users, loading } = useSelector((state: RootState) => state.user);
+  const { users, loading, loadingButton } = useSelector(
+    (state: RootState) => state.user
+  );
   const dispatch = useDispatch<AppDispatch>();
 
   useEffect(() => {
@@ -17,11 +20,11 @@ const HomePage = () => {
 
   if (loading) return <div>Loading...</div>;
 
-  console.log(users);
+  const handleDelete = async (id: string) => {};
 
   return (
     <div>
-      <table className="w-full border border-gray-400">
+      <table className="w-full border border-gray-400 overflow-auto">
         <thead>
           <tr>
             <th className="border border-gray-400 text-left">Name</th>
@@ -39,8 +42,16 @@ const HomePage = () => {
               <td>{user.email}</td>
               <td>{user.phone}</td>
               <td>
-                <button className="bg-blue-500 text-white p-1">Edit</button>
-                <button className="bg-red-500 text-white p-1">Delete</button>
+                <button className="bg-blue-500 text-white p-1">
+                  <Link href={`/user/update/${user._id}`}>Edit</Link>
+                </button>
+                <button
+                  className="bg-red-500 text-white p-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                  onClick={() => dispatch(deleteUser(user._id!))}
+                  disabled={loadingButton}
+                >
+                  Delete
+                </button>
               </td>
             </tr>
           ))}
