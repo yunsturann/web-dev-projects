@@ -2,7 +2,7 @@ import { FC } from "react";
 
 interface InputProps {
   name: string;
-  type: "text" | "email" | "password" | "number";
+  type: "text" | "email" | "password" | "number" | "hidden";
   placeholder?: string;
   value?: string;
   disabled?: boolean;

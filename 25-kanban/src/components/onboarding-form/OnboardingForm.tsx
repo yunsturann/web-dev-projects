@@ -1,6 +1,7 @@
 "use client";
+/* eslint-disable react-hooks/exhaustive-deps */
 // ** React
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, FormEvent, useEffect, useState } from "react";
 
 // ** Nextjs
 import { useRouter } from "next/navigation";
@@ -10,12 +11,16 @@ import toast from "react-hot-toast";
 import { SyncLoader } from "react-spinners";
 import { motion } from "framer-motion";
 
+// ** Actions
+import { createNewBoard, createTask } from "@/actions/board-actions";
+
 // ** Custom Components
 import Input from "../ui/Input";
 import Button from "../ui/Button";
 
 interface OnboardingFormProps {
   user: string | null | undefined;
+  boardId: string | null;
 }
 
 // Framer motion variants
@@ -28,14 +33,19 @@ const variant = {
 const MotionDiv = motion.div;
 
 const OnboardingForm: FC<OnboardingFormProps> = (props) => {
-  const { user } = props;
+  const { user, boardId } = props;
   const router = useRouter();
   // ** states
   const [step, setStep] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  // check if there is a boardid if true router replace to /mykanban
+  useEffect(() => {
+    if (boardId !== null) {
+      router.replace("/mykanban");
+    }
+  }, []);
 
+  // check if there is a boardid if true router replace to /mykanban
   const stepOneSubmit = () => {
     setStep(2);
   };
@@ -74,11 +84,12 @@ const OnboardingForm: FC<OnboardingFormProps> = (props) => {
           </h1>
           <form
             className="flex flex-col items-center gap-10"
+            action={createNewBoard}
             onSubmit={stepOneSubmit}
           >
             <Input
               type="text"
-              name="name"
+              name="boardName"
               placeholder="My Board Name..."
               disabled={loading}
             />
@@ -98,6 +109,7 @@ const OnboardingForm: FC<OnboardingFormProps> = (props) => {
             Now Lets Add your first task! 🤗
           </h1>
           <form
+            action={createTask}
             onSubmit={stepTwoSubmit}
             className="flex flex-col gap-10 items-center"
           >
@@ -107,7 +119,8 @@ const OnboardingForm: FC<OnboardingFormProps> = (props) => {
               placeholder="My First Task..."
               disabled={loading}
             />
-            {/* HIDDEN INPUT HERE FOR BOARDID */}
+
+            <Input type="hidden" name="boardId" value={boardId!} />
 
             <div className="flex justify-between mb-10 w-4/5">
               <Button
