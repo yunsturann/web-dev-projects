@@ -10,7 +10,9 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.29.12",
+    "@hello-pangea/dnd": "^16.6.0",
     "@prisma/client": "^5.12.1",
+    "axios": "^1.6.8",
     "framer-motion": "^11.1.3",
     "next": "14.2.1",
     "react": "^18",

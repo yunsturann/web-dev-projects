@@ -32,8 +32,8 @@ export async function createNewBoard(formData: FormData) {
       },
     });
   }
-  revalidatePath("/");
-  //revalidatePath("/onboarding");
+  // revalidatePath("/");
+  revalidatePath("/onboarding");
 }
 
 export async function createTask(formData: FormData) {
@@ -41,6 +41,7 @@ export async function createTask(formData: FormData) {
     boardId: string;
     task: string;
   };
+
   console.log(boardId, name);
   // Check if task is empty
   if (!name.trim()) return;
