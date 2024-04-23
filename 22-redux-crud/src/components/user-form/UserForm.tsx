@@ -1,5 +1,5 @@
 // ** React
-import React, { FC, useEffect } from "react";
+import React, { ChangeEvent, FC, useEffect } from "react";
 
 // ** Types & Schemas
 import { UserType, UserTypeWithId, userSchema } from "@/types/UserType";
@@ -19,6 +19,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { postUser, updateUser } from "../../store/user-slice";
+import { set } from "mongoose";
 
 // ** Utils
 // import { formatPhoneNumber } from "@/lib/utils";
@@ -50,7 +51,24 @@ const UserForm: FC<UserFormProps> = ({ initialData }) => {
   );
 
   useEffect(() => {
-    // format phone number
+    const pressedKey = phoneNumber?.slice(-1);
+    // if not an digit, dont set value
+    if (isNaN(Number(pressedKey))) {
+      setValue("phone", phoneNumber.slice(0, -1));
+      return;
+    }
+    if (phoneNumber.length === 1) {
+      setValue("phone", `(${phoneNumber}`);
+      return;
+    }
+    if (phoneNumber.length === 5) {
+      setValue("phone", `${phoneNumber.slice(0, 4)})-${pressedKey}`);
+      return;
+    }
+    if (phoneNumber.length === 10) {
+      setValue("phone", `${phoneNumber.slice(0, 9)}-${pressedKey}`);
+      return;
+    }
   }, [phoneNumber, setValue]);
 
   // ** Arrow functions
