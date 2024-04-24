@@ -10,8 +10,10 @@ import { Ubuntu } from "next/font/google";
 // ** Third Party Imports
 import { ClerkProvider } from "@clerk/nextjs";
 import ToasterContext from "@/context/ToasterContext";
+import Theme from "@/providers/ThemeProvider";
 
 // ** Custom Components
+import Navbar from "@/components/navbar/Navbar";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
@@ -30,10 +32,13 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en">
-        <body className={`${ubuntu.className} dark:bg-gray-900 text-white`}>
-          <ToasterContext />
-          {children}
+      <html lang="en" suppressHydrationWarning>
+        <body className={`${ubuntu.className} dark:bg-gray-900 `}>
+          <Theme>
+            <ToasterContext />
+            <Navbar />
+            {children}
+          </Theme>
         </body>
       </html>
     </ClerkProvider>
