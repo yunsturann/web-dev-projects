@@ -15,8 +15,15 @@ import toast from "react-hot-toast";
 // ** Types
 import { ITask, IBoard } from "../../../types/types";
 
+// ** React Icons
+import { FaPlus } from "react-icons/fa";
+
 // ** Custom Components
 import Column from "./Column";
+import Modal from "../ui/Modal";
+
+// ** Server Actions
+import { createTask } from "@/actions/board-actions";
 
 interface BoardProps {
   board: IBoard | null;
@@ -25,8 +32,10 @@ interface BoardProps {
 const Board: FC<BoardProps> = (props) => {
   const { board } = props;
   const router = useRouter();
+
   const [tasks, setTasks] = useState<ITask[] | null>(null);
   const [loading, setLoading] = useState(true);
+  const [isCreate, setIsCreate] = useState(false);
 
   useEffect(() => {
     if (!board) {
@@ -37,6 +46,14 @@ const Board: FC<BoardProps> = (props) => {
     setTasks(board.tasks);
     setLoading(false);
   }, [board]);
+
+  const openModal = () => {
+    setIsCreate(true);
+  };
+
+  const closeModal = () => {
+    setIsCreate(false);
+  };
 
   const onDragEnd = (result: DropResult) => {
     const { destination, source, draggableId } = result;
@@ -104,6 +121,21 @@ const Board: FC<BoardProps> = (props) => {
 
       <DragDropContext onDragEnd={onDragEnd}>
         <div className="grid md:grid-cols-3 max-md:items-center gap-10 md:gap-5 w-[90%] max-w-[1450px] mx-auto">
+          <button
+            className="bg-gray-700 rounded-full hover:bg-gray-600 text-white font-bold p-4 absolute right-10 bottom-10"
+            onClick={openModal}
+          >
+            <FaPlus />
+          </button>
+          {isCreate && (
+            <Modal
+              closeModal={closeModal}
+              title="Create New Task"
+              isCreate={isCreate}
+              action={createTask}
+              value={board!.id}
+            />
+          )}
           <Column
             title="Todo"
             tasks={tasks?.filter((task) => task.status === "TODO") || []}

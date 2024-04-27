@@ -56,3 +56,21 @@ export async function createTask(formData: FormData) {
 
   revalidatePath("/");
 }
+
+export async function editTask(formData: FormData) {
+  const newTask = formData.get("newTask") as string;
+  const taskId = formData.get("taskId") as string;
+
+  if (!newTask.trim()) return;
+
+  await prisma.task.update({
+    where: {
+      id: taskId,
+    },
+    data: {
+      name: newTask,
+    },
+  });
+
+  revalidatePath("/mykanban");
+}
