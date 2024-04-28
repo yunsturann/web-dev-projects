@@ -74,3 +74,15 @@ export async function editTask(formData: FormData) {
 
   revalidatePath("/mykanban");
 }
+
+export async function deleteTask(formData: FormData) {
+  const taskId = formData.get("taskId") as string;
+
+  await prisma.task.delete({
+    where: {
+      id: taskId,
+    },
+  });
+
+  revalidatePath("/mykanban");
+}

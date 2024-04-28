@@ -23,7 +23,7 @@ const Navbar = () => {
     <div
       className={`w-full py-5 bg-transparent relative z-10 
       ${!kanbanRoute || onboardingRoute ? "text-white" : null}
-      ${authRoutes && "text-gray-900 dark:text-white"}
+      ${authRoutes && "text-gray-800 dark:text-white"}
     `}
     >
       <div className="flex justify-between w-[90%] max-w-[1450px] mx-auto">

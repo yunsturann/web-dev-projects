@@ -7,13 +7,16 @@ interface InputProps {
   value?: string;
   disabled?: boolean;
   fullWidth?: boolean;
+  defaultValue?: string;
 }
 
 const Input: FC<InputProps> = (props) => {
-  const { name, type, placeholder, value, disabled, fullWidth } = props;
+  const { name, type, placeholder, value, disabled, fullWidth, defaultValue } =
+    props;
 
   return (
     <input
+      defaultValue={defaultValue}
       name={name}
       type={type}
       disabled={disabled}

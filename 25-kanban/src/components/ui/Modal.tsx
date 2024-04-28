@@ -14,14 +14,30 @@ interface ModalProps {
   action: (formData: FormData) => Promise<void>;
   value: string;
   isCreate?: boolean;
+  isEdit?: boolean;
+  isDelete?: boolean;
+  taskValue?: string;
 }
 
 const Modal: FC<ModalProps> = (props) => {
-  const { closeModal, title, action, value, isCreate } = props;
+  const {
+    closeModal,
+    title,
+    action,
+    value,
+    isCreate,
+    isDelete,
+    isEdit,
+    taskValue,
+  } = props;
 
   const handleSubmit = () => {
     if (isCreate) {
       toast.success("New Task Created");
+    } else if (isEdit) {
+      toast.success("Task has been edited");
+    } else if (isDelete) {
+      toast.success("Task has been deleted");
     }
     closeModal();
   };
@@ -39,6 +55,7 @@ const Modal: FC<ModalProps> = (props) => {
         <div className="flex justify-center">
           <form action={action} onSubmit={handleSubmit}>
             <Input type="hidden" name="taskId" value={value} />
+            {/* Create Form inputs */}
             {isCreate && (
               <>
                 <Input
@@ -49,6 +66,16 @@ const Modal: FC<ModalProps> = (props) => {
                 />
                 <Input type="hidden" value={value} name="boardId" />
               </>
+            )}
+            {/* Edit Form inputs */}
+            {isEdit && (
+              <Input
+                type="text"
+                name="newTask"
+                defaultValue={taskValue}
+                placeholder="Enter new task name"
+                fullWidth
+              />
             )}
             <div className="mt-5 flex gap-5">
               <Button confirmButton text="Confirm" type="submit" />
