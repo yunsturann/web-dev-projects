@@ -3,6 +3,7 @@ import React from "react";
 
 // ** Next Imports
 import Image from "next/image";
+import Link from "next/link";
 
 // ** Constants
 import { navItems } from "@/constants";
@@ -10,22 +11,25 @@ import { navItems } from "@/constants";
 // ** Custom Components
 import Container from "../Container";
 import NavItem from "./NavItem";
-import Link from "next/link";
+import HamburgerMenu from "./HamburgerMenu";
+import BasketMenu from "./BasketMenu";
 
 const Navbar = () => {
   return (
-    <header>
-      <Container className="h-16 md:h-24 border-b border-gray-200 flex justify-between items-center">
+    <header className="relative shadow-sm">
+      <Container className="border-b border-gray-200 flex justify-between items-center">
         {/* LEFT SIDE */}
-        <div className="h-full flex items-center gap-x-6 md:gap-x-12 ">
+        <div className="flex items-center gap-x-4 md:gap-x-12 ">
+          {/* HAMBURGER MENU */}
+          <HamburgerMenu />
           {/* LOGO */}
-          <Link href={"/"}>
+          <Link href={"/"} className="py-8">
             <Image src="/images/logo.svg" alt="Logo" width={140} height={40} />
           </Link>
 
           {/* NAVIGATION ITEMS */}
-          <nav className="h-full flex items-center">
-            <ul className="h-full flex items-center gap-x-6">
+          <nav className="hidden md:block">
+            <ul className="flex items-center gap-x-6">
               {navItems.map((item) => (
                 <NavItem key={item.name} {...item} />
               ))}
@@ -33,17 +37,11 @@ const Navbar = () => {
           </nav>
         </div>
         {/* Right SIDE */}
-        <div className="flex items-center gap-x-6 md:gap-10">
+        <div className="flex items-center gap-x-3 sm:gap-x-6 md:gap-x-10">
           {/* BASKET */}
-          <Image
-            src="/images/icon-cart.svg"
-            alt="cart"
-            width={24}
-            height={24}
-            className="cursor-pointer hover:opacity-75 transition"
-          />
+          <BasketMenu />
           {/* PROFILE */}
-          <div className="cursor-pointer rounded-full border border-transparent hover:border-primary-orange transition">
+          <div className="cursor-pointer rounded-full border-2 border-transparent hover:border-primary-orange transition">
             <Image
               src="/images/image-avatar.png"
               alt="user"
@@ -53,6 +51,7 @@ const Navbar = () => {
           </div>
         </div>
       </Container>
+      {/* Hamburger Menu */}
     </header>
   );
 };

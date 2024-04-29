@@ -20,3 +20,20 @@ export const navItems = [
     url: "/contact",
   },
 ];
+
+export const products = [
+  {
+    id: 1,
+    name: "Fall Limited Edition Sneakers",
+    price: 125.0,
+    quantity: 3,
+    image: "/images/image-product-1-thumbnail.jpg",
+  },
+  {
+    id: 2,
+    name: "Fall Limited Edition Sneakers",
+    price: 125.0,
+    quantity: 3,
+    image: "/images/image-product-1-thumbnail.jpg",
+  },
+];
