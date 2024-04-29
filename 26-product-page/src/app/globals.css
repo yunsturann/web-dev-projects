@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*nav-item hover animation*/
+
+.nav-item {
+  position: relative;
+}
+
+.nav-item::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: hsl(26, 100%, 55%);
+  transition: width 0.3s ease;
+}
+.nav-item:hover::before {
+  width: 100%;
+}
