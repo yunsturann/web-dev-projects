@@ -6,8 +6,8 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const variants = {
-  blue: "bg-var-blue text-white hover:bg-blue-700 active:bg-blue-800 ",
-  black: "bg-var-black text-white hover:bg-black-700 active:bg-black-800",
+  blue: "bg-var-blue text-white hover:bg-blue-700 active:bg-blue-800",
+  black: "bg-var-black text-white hover:opacity-85 active:opacity-80",
 };
 
 const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
@@ -18,7 +18,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>((props, ref) => {
       ref={ref}
       {...rest}
       className={cn(
-        "px-10 py-[15px] rounded-full font-medium shadow-md transition duration-300",
+        "px-10 py-[15px] rounded-full font-medium shadow-md transition duration-300 ",
         variants[variant],
         className
       )}

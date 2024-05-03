@@ -16,7 +16,11 @@ import MobileNav from "./MobileNav";
 
 const Navbar = () => {
   return (
-    <nav className="absolute top-0 w-full my-10 py-6 ">
+    <nav
+      className="fixed lg:absolute top-0 w-full py-4 lg:py-16 bg-var-black/80 z-10"
+      data-aos="fade-down"
+      data-aos-once="true"
+    >
       <Container className="flex items-center justify-between">
         {/* LOGO */}
 

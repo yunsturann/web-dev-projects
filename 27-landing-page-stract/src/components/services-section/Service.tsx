@@ -7,15 +7,18 @@ interface ServiceProps {
   desc: string;
   img: string;
   isActive?: boolean;
+  aosDelay?: string;
 }
 
 const Service: FC<ServiceProps> = (props) => {
-  const { title, desc, img, isActive = false } = props;
+  const { title, desc, img, isActive = false, aosDelay = "100" } = props;
   return (
     <li
       className={cn("bg-gray-200 rounded-lg p-5 shadow-lg", {
         "bg-var-blue text-white ": isActive,
       })}
+      data-aos="fade-down"
+      data-aos-delay={aosDelay}
     >
       <Image
         src={img}

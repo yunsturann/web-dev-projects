@@ -77,3 +77,76 @@ export const securityItems = [
     img: "/images/security-icon.png",
   },
 ];
+
+export const howItWorksItems = [
+  {
+    title: "Ensure Data Accuracy",
+    desc: "Many desktop publishing packages and web page editors now use for them.",
+    img: "/images/step-1.png",
+  },
+  {
+    title: "Better Data Sources",
+    desc: "Ensuring data accuracy is crucial for making informed decisions and ensuring the reliability.",
+    img: "/images/step-2.png",
+  },
+  {
+    title: "Business Analytics",
+    desc: "Ensuring data accuracy is crucial for making informed decisions and ensuring the reliability.",
+    img: "/images/step-3.png",
+  },
+];
+
+export const socialLinks = [
+  {
+    name: "X-Twitter",
+    href: "https://twitter.com",
+    icon: "/images/twitter.png",
+  },
+  {
+    name: "Facebook",
+    href: "https://facebook.com",
+    icon: "/images/facebook.png",
+  },
+  {
+    name: "Instagram",
+    href: "https://instagram.com",
+    icon: "/images/instagram.png",
+  },
+  {
+    name: "Github",
+    href: "https://github.com",
+    icon: "/images/github.png",
+  },
+];
+
+export const footerLinks = {
+  company: [
+    {
+      name: "Service",
+      href: "/service",
+    },
+    {
+      name: "Resources",
+      href: "/resources",
+    },
+    {
+      name: "About us",
+      href: "/about",
+    },
+  ],
+
+  help: [
+    {
+      name: "Customer Support",
+      href: "/support",
+    },
+    {
+      name: "Terms & Conditions",
+      href: "/terms",
+    },
+    {
+      name: "Privacy Policy",
+      href: "/privacy",
+    },
+  ],
+};

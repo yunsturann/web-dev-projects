@@ -17,10 +17,10 @@ const Security = () => {
       <Container className="space-y-12">
         {/* Header */}
         <header className="w-2/3 max-w-[630px] mx-auto text-center space-y-4">
-          <h2 className="heading_two">
+          <h2 className="heading_two" data-aos="fade-left">
             Cyber Security <br /> Penetration Testing Data
           </h2>
-          <p className="text-lg text-var-gray">
+          <p className="text-lg text-var-gray" data-aos="fade-right">
             Data analysis software is a type of software tool used for data
             analysis and reporting. It is designed to help businesses,
             organizations.
@@ -45,7 +45,13 @@ const Security = () => {
               if (index === 0) {
                 return <SecurityItem key={item.title} {...item} isActive />;
               }
-              return <SecurityItem key={item.title} {...item} />;
+              return (
+                <SecurityItem
+                  key={item.title}
+                  {...item}
+                  aosDelay={((index + 1) * 150).toString()}
+                />
+              );
             })}
           </ul>
         </div>

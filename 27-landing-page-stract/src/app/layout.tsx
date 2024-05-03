@@ -5,6 +5,7 @@ import "./globals.css";
 // ** Custom Components
 import Footer from "@/components/footer/Footer";
 import Navbar from "@/components/navbar/Navbar";
+import Provider from "@/components/shared/Provider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,11 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="min-h-screen flex flex-col relative overflow-x-hidden">
-          <Navbar />
-          {children}
-          <Footer />
-        </main>
+        <Provider>
+          <main className="min-h-screen flex flex-col relative overflow-x-hidden">
+            <Navbar />
+            {children}
+            <Footer />
+          </main>
+        </Provider>
       </body>
     </html>
   );
