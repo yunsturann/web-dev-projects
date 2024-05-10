@@ -23,9 +23,9 @@ const MediaUploader: FC<MediaUploaderProps> = (props) => {
     setImage((prev: any) => ({
       ...prev,
       publicId: result?.info?.public_id,
-      url: result?.info?.secure_url,
       width: result?.info?.width,
       height: result?.info?.height,
+      secureURL: result?.info?.secure_url,
     }));
 
     onValueChange(result?.info?.public_id);

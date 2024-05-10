@@ -12,14 +12,9 @@ const AddTransformationTypePage = async ({
   const { userId } = auth();
   const transformation = transformationTypes[type];
 
-  // if (!userId) redirect("/sign-in");
+  if (!userId) redirect("/sign-in");
 
-  // const user = await getUserById(userId);
-  // dummy user
-  const user = {
-    _id: "123",
-    creditBalance: 100,
-  };
+  const user = await getUserById(userId);
 
   return (
     <>
