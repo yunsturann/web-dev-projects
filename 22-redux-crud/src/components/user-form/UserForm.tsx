@@ -36,6 +36,7 @@ const UserForm: FC<UserFormProps> = ({ initialData }) => {
     handleSubmit,
     watch,
     setValue,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<UserType>({
     resolver: yupResolver(userSchema),
@@ -53,7 +54,7 @@ const UserForm: FC<UserFormProps> = ({ initialData }) => {
   useEffect(() => {
     const pressedKey = phoneNumber?.slice(-1);
     // if not an digit, dont set value
-    if (isNaN(Number(pressedKey))) {
+    if (isNaN(Number(pressedKey)) || pressedKey === " ") {
       setValue("phone", phoneNumber.slice(0, -1));
       return;
     }
@@ -76,9 +77,12 @@ const UserForm: FC<UserFormProps> = ({ initialData }) => {
     if (EDIT_MODE) {
       // update user
       dispatch(updateUser({ ...data, _id: initialData._id }));
+      alert("User updated successfully");
     } else {
       // create user
       dispatch(postUser(data));
+      alert("User created successfully");
+      reset();
     }
   };
 

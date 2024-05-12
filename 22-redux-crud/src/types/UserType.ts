@@ -8,7 +8,10 @@ export const userSchema = yup.object().shape({
   email: yup.string().email().required("Email is required"),
   address: yup.string().max(255, "Address is too long"),
   city: yup.string().required("City is required"),
-  phone: yup.string().required("Phone is required"),
+  phone: yup
+    .string()
+    .required("Phone is required")
+    .matches(/^\(\d{3}\)-\d{3}-\d{4}$/, "Phone number is not valid"),
   birthdate: yup.string().nullable(),
   gender: yup.string().nullable(),
 });
