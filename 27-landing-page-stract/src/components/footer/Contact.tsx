@@ -7,7 +7,7 @@ import Button from "../ui/Button";
 
 const Contact = () => {
   return (
-    <div className="relative">
+    <div id="contact-us" className="relative">
       {/* Background */}
       <div className="absolute bottom-0 inset-x-0 h-1/2 bg-var-black -z-10"></div>
       {/* Contact Container */}

@@ -13,7 +13,7 @@ import Step from "./Step";
 
 const HowItWorks = () => {
   return (
-    <section className="py-20 md:py-32">
+    <section id="resources" className="py-20 md:py-32">
       <Container>
         {/* Header */}
         <header className="w-2/3 max-w-[630px] mx-auto text-center space-y-4">

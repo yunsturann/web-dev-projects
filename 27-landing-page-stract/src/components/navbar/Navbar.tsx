@@ -36,7 +36,7 @@ const Navbar = () => {
         </ul>
         {/* CONTACT US BTN */}
         <Button className="hidden lg:block">
-          <Link href="/contact">Contact Us</Link>
+          <Link href="#contact-us">Contact Us</Link>
         </Button>
 
         {/* MOBILE NAV */}

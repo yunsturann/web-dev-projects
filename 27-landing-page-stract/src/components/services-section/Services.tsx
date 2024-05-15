@@ -6,11 +6,11 @@ import { services } from "@/constants";
 
 // ** Custom Components
 import Container from "../shared/Container";
-import Service from "./Service";
+import Service from "./ServiceCard";
 
 const Services = () => {
   return (
-    <section className="py-20 md:py-32">
+    <section className="py-20 md:py-32" id="services">
       <Container>
         <header className="w-2/3 max-w-[630px] mx-auto text-center space-y-4">
           <h2 className="heading_two" data-aos="fade-right">

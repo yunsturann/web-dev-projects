@@ -5,15 +5,15 @@ export const navItems = [
   },
   {
     name: "Service",
-    href: "/service",
+    href: "#services",
   },
   {
     name: "Resources",
-    href: "/resources",
+    href: "#resources",
   },
   {
     name: "About us",
-    href: "/about",
+    href: "#about",
   },
 ];
 

@@ -11,7 +11,10 @@ import Rating from "./Rating";
 
 const About = () => {
   return (
-    <section className="py-20 md:py-32 bg-var-black text-white relative">
+    <section
+      id="about"
+      className="py-20 md:py-32 bg-var-black text-white relative"
+    >
       <Container className="flex flex-col lg:flex-row justify-between gap-20">
         {/* Left Img */}
         <div
