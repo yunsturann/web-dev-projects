@@ -119,8 +119,14 @@ const Detail = () => {
             <img src="./arrowUp.png" alt="" />
           </div>
         </div>
+
         {/* Block User */}
         <button type="button">Block User</button>
+
+        {/* Block User */}
+        <button type="button" className="logout">
+          Logout
+        </button>
       </div>
     </div>
   );

@@ -1,5 +1,7 @@
 import "./chatList.css";
 
+import AddUser from "./add-user/AddUser";
+
 // ** React Imports
 import { useState } from "react";
 
@@ -20,7 +22,7 @@ const ChatList = () => {
         <img
           src={addMode ? "./minus.png" : "./plus.png"}
           alt="add new user"
-          className="addUser"
+          className="addUserBtn"
           onClick={() => setAddMode((prev) => !prev)}
         />
       </div>
@@ -62,6 +64,9 @@ const ChatList = () => {
           <p>hello</p>
         </div>
       </div>
+
+      {/* Add User Modal */}
+      {addMode && <AddUser />}
     </div>
   );
 };
