@@ -31,3 +31,27 @@
     }
 
 }
+
+# vite env file usage
+
+- apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+
+# arrayUnion
+
+- array union allows us to add a new element to an array without duplicating it
+
+      await updateDoc(doc(userChatsRef, user.id),{
+        chats: arrayUnion({
+          chatId: newChatRef.id,
+        })
+      })
+
+# serverTimestamp()
+
+- serverTimestamp allows us to get the current time from the firebase server
+- doesnt work with arrayUnion
+
+  await setDoc(newChatRef, {
+  createdAt: serverTimestamp(),
+  messages: [],
+  });
