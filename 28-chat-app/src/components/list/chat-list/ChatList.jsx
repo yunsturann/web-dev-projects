@@ -5,11 +5,14 @@ import AddUser from "./add-user/AddUser";
 // ** React Imports
 import { useEffect, useState } from "react";
 import { useUserStore } from "../../../store/user-store";
-import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../../config/firebase";
+import { useChatStore } from "../../../store/chat-store";
+import { toast } from "react-toastify";
 
 const ChatList = () => {
   const { currentUser } = useUserStore();
+  const { changeChat } = useChatStore();
 
   const [addMode, setAddMode] = useState(false);
   const [chats, setChats] = useState([]);
@@ -40,7 +43,28 @@ const ChatList = () => {
     };
   }, [currentUser.id]);
 
-  console.log(chats);
+  const handleSelect = async (chat) => {
+    const userChats = chats.map((item) => {
+      // eslint-disable-next-line no-unused-vars
+      const { user, ...rest } = item;
+      return rest;
+    });
+
+    const chatIndex = userChats.findIndex(
+      (item) => item.chatId === chat.chatId
+    );
+
+    userChats[chatIndex].isSeen = true;
+
+    try {
+      await updateDoc(doc(db, "userchats", currentUser.id), {
+        chats: userChats,
+      });
+      changeChat(chat.chatId, chat.user);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
   return (
     <div className="chatList">
@@ -63,7 +87,14 @@ const ChatList = () => {
 
       {/* Chat List */}
       {chats.map((chat) => (
-        <div key={chat.chatId} className="item">
+        <div
+          key={chat.chatId}
+          className="item"
+          onClick={() => handleSelect(chat)}
+          style={{
+            backgroundColor: chat?.isSeen ? "transparent" : "#5183fe",
+          }}
+        >
           <img
             src={chat.user.avatar || "./avatar.png"}
             alt={chat.user.username + "'s avatar"}
