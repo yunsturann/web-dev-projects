@@ -1,6 +1,7 @@
 .addUser {
   position: absolute;
   inset: 0;
+  z-index: 100;
   background-color: rgba(17, 25, 40, 0.8);
   border-radius: 10px;
   padding: 30px;

@@ -46,6 +46,12 @@
         })
       })
 
+# arrayRemove
+
+      await updateDoc(userDocRef, {
+        blocked: isReceiverBlocked ? arrayRemove(user.id) : arrayUnion(user.id),
+      });
+
 # serverTimestamp()
 
 - serverTimestamp allows us to get the current time from the firebase server
@@ -55,3 +61,12 @@
   createdAt: serverTimestamp(),
   messages: [],
   });
+
+# if imgUrl is null, it will not be added to the object.
+
+      {
+        senderId: currentUser.id,
+        text,
+        createdAt: new Date(),
+        ...(imgUrl && { img: imgUrl }),
+      }

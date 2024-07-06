@@ -12,20 +12,26 @@ import { db } from "../../config/firebase";
 import { useChatStore } from "../../store/chat-store";
 import { toast } from "react-toastify";
 import { useUserStore } from "../../store/user-store";
+import uploadStorage from "../../lib/firebase/uploadStorage";
 
 const Chat = () => {
-  const { chatId, user } = useChatStore();
+  const { chatId, user, isCurrentUserBlocked, isReceiverBlocked } =
+    useChatStore();
   const { currentUser } = useUserStore();
 
   const [showEmojiPicker, setShowEmojiPicker] = useState(false);
   const [text, setText] = useState("");
   const [chat, setChat] = useState();
+  const [img, setImg] = useState({
+    file: null,
+    url: "",
+  });
 
   const endRef = useRef(null);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, []);
+  }, [chat]);
 
   useEffect(() => {
     const unSub = onSnapshot(doc(db, "chats", chatId), (res) => {
@@ -42,15 +48,31 @@ const Chat = () => {
     setShowEmojiPicker(false);
   };
 
+  const handleImg = (e) => {
+    if (e.target.files[0]) {
+      setImg({
+        file: e.target.files[0],
+        url: URL.createObjectURL(e.target.files[0]),
+      });
+    }
+  };
+
   const handleSend = async () => {
     if (!text.trim()) return;
 
+    let imgUrl = null;
+
     try {
+      if (img.file) {
+        imgUrl = await uploadStorage(img.file, "chatImages");
+      }
+
       await updateDoc(doc(db, "chats", chatId), {
         messages: arrayUnion({
           senderId: currentUser.id,
           text,
           createdAt: new Date(),
+          ...(imgUrl && { img: imgUrl }),
         }),
       });
 
@@ -78,8 +100,21 @@ const Chat = () => {
           });
         }
       });
+
+      setImg({
+        file: null,
+        url: "",
+      });
+
+      setText("");
     } catch (error) {
       toast.error(error.message);
+    }
+  };
+
+  const onKeyDown = (e) => {
+    if (e.key === "Enter") {
+      handleSend();
     }
   };
 
@@ -88,9 +123,9 @@ const Chat = () => {
       {/* User Detail */}
       <div className="top">
         <div className="user">
-          <img src="./avatar.png" alt="" />
+          <img src={user?.avatar || "./avatar.png"} alt="" />
           <div className="texts">
-            <span>John doe</span>
+            <span>{user?.username}</span>
             <p>Lorem ipsum dolor sit amet</p>
           </div>
         </div>
@@ -125,15 +160,31 @@ const Chat = () => {
       {/* Chat Input */}
       <div className="bottom">
         <div className="icons">
-          <img src="./img.png" alt="" />
+          {/* Image input icon */}
+          <label htmlFor="img_file">
+            <img src="./img.png" alt="" />
+          </label>
+          <input
+            type="file"
+            id="img_file"
+            style={{ display: "none" }}
+            onChange={handleImg}
+          />
+
           <img src="./camera.png" alt="" />
           <img src="./mic.png" alt="" />
         </div>
         <input
           type="text"
-          placeholder="Type a message"
+          placeholder={
+            isCurrentUserBlocked || isReceiverBlocked
+              ? "You can't send a message"
+              : "Type a message"
+          }
           value={text}
           onChange={(e) => setText(e.target.value)}
+          disabled={isCurrentUserBlocked || isReceiverBlocked}
+          onKeyDown={onKeyDown}
         />
         <div className="emoji">
           <img
@@ -145,10 +196,22 @@ const Chat = () => {
             <EmojiPicker open={showEmojiPicker} onEmojiClick={handleEmoji} />
           </div>
         </div>
-        <div className="sendButton" onClick={handleSend}>
+        <button
+          type="button"
+          className="sendButton"
+          onClick={handleSend}
+          disabled={isCurrentUserBlocked || isReceiverBlocked}
+        >
           Send
-        </div>
+        </button>
       </div>
+
+      {/* uploaded file */}
+      {img.url && (
+        <div className="uploadedImg">
+          <img src={img.url} alt="" />
+        </div>
+      )}
     </div>
   );
 };

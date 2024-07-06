@@ -16,6 +16,7 @@ const ChatList = () => {
 
   const [addMode, setAddMode] = useState(false);
   const [chats, setChats] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
     const unSub = onSnapshot(
@@ -42,6 +43,11 @@ const ChatList = () => {
       unSub();
     };
   }, [currentUser.id]);
+
+  // filter
+  const filteredChats = chats.filter((chat) =>
+    chat.user.username.toLowerCase().includes(searchQuery.toLowerCase())
+  );
 
   const handleSelect = async (chat) => {
     const userChats = chats.map((item) => {
@@ -73,7 +79,12 @@ const ChatList = () => {
         {/* Search Bar */}
         <div className="searchBar">
           <img src="./search.png" alt="search" />
-          <input type="text" placeholder="Search" />
+          <input
+            type="text"
+            placeholder="Search"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
 
         {/* Add new user Button */}
@@ -86,7 +97,7 @@ const ChatList = () => {
       </div>
 
       {/* Chat List */}
-      {chats.map((chat) => (
+      {filteredChats.map((chat) => (
         <div
           key={chat.chatId}
           className="item"
@@ -96,11 +107,19 @@ const ChatList = () => {
           }}
         >
           <img
-            src={chat.user.avatar || "./avatar.png"}
+            src={
+              chat.user.blocked.includes(currentUser.id)
+                ? "./avatar.png"
+                : chat.user.avatar || "./avatar.png"
+            }
             alt={chat.user.username + "'s avatar"}
           />
           <div className="texts">
-            <span>{chat.user.username}</span>
+            <span>
+              {chat.user.blocked.includes(currentUser.id)
+                ? "User"
+                : chat.user.username}
+            </span>
             <p>{chat.lastMessage}</p>
           </div>
         </div>

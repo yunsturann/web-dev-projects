@@ -5,6 +5,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
+  position: relative;
 
   .top {
     padding: 20px;
@@ -158,6 +159,28 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+
+      &:disabled {
+        background-color: #a5a5a5;
+        cursor: not-allowed;
+      }
+    }
+  }
+
+  .uploadedImg {
+    position: absolute;
+    bottom: 150px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: rgba(124, 129, 138, 0.6);
+    padding: 20px;
+
+    img {
+      width: 240px;
+      height: 200px;
+      border-radius: 24px;
     }
   }
 }
