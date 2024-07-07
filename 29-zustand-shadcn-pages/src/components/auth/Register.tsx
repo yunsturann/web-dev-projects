@@ -83,10 +83,6 @@ const Register = () => {
         id: res.user.uid,
       });
 
-      await setDoc(doc(db, "usertodos", res.user.uid), {
-        todos: [],
-      });
-
       toast({
         title: "Account created",
         description: "You have successfully created an account",

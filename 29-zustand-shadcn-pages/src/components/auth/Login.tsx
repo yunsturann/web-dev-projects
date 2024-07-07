@@ -46,6 +46,7 @@ const Login = () => {
       toast({
         title: "Login successful",
         description: "You have successfully logged in.",
+        variant: "success",
       });
 
       router.push("/");

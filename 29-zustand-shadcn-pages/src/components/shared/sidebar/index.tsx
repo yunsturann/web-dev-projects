@@ -10,11 +10,11 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command";
+import { publicPages } from "@/constants";
 import { useUserStore } from "@/store/use-user-store";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
-const publicPages = ["/auth"];
+import { ThemeSwitcher } from "./ThemeSwitcher";
 
 const Sidebar = () => {
   const router = useRouter();
@@ -73,7 +73,9 @@ const Sidebar = () => {
           </CommandGroup>
         </CommandList>
       </div>
-      <div></div>
+      <div>
+        <ThemeSwitcher />
+      </div>
     </Command>
   );
 };
