@@ -1,4 +1,5 @@
 import "./app.scss";
+import Contact from "./components/contact";
 
 import Hero from "./components/hero";
 import Navbar from "./components/navbar";
@@ -21,7 +22,6 @@ const App = () => {
       <section>
         <Services />
       </section>
-      <section>Parallax</section>
 
       <section id="Portfolio">
         <Parallax type="portfolio" />
@@ -29,7 +29,9 @@ const App = () => {
 
       <Portfolio />
 
-      <section id="Contact">Contact</section>
+      <section id="Contact">
+        <Contact />
+      </section>
     </div>
   );
 };
