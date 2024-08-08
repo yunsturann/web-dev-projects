@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 const variants = {
   initial: {
     opacity: 0,
-    x: -500,
+    x: -200,
     scale: 0.5,
   },
   animate: {
