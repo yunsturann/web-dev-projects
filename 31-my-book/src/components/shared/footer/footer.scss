@@ -1,2 +1,31 @@
+@import "../../../styles/index.scss";
+
 .footer {
+  background-color: $orange;
+  color: white;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+
+    a {
+      transition: all 0.3s;
+
+      &:hover {
+        color: #1d4ed8;
+      }
+    }
+
+    .links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+  }
 }

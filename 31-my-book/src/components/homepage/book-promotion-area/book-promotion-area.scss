@@ -1,0 +1,144 @@
+@import "../../../styles/index.scss";
+
+.book-promotion-area {
+  background-color: $main-gray;
+  padding: 90px 0;
+
+  .wrapper {
+    max-width: 1440px;
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .left-side {
+    position: sticky;
+    left: 0;
+    top: 90px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+
+    .left-side-list {
+      font-size: 1.4rem;
+
+      h2 {
+        font-weight: 500;
+        padding: 0 50px;
+      }
+
+      li {
+        margin-top: 16px;
+        padding: 8px 50px;
+        cursor: pointer;
+
+        &:hover {
+          background: white;
+        }
+      }
+    }
+  }
+
+  .right-side {
+    margin-left: 60px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 70px;
+
+    .card-section {
+      padding: 42px 75px;
+      background-color: white;
+
+      h2 {
+        font-weight: 500;
+        font-size: 2.5rem;
+        margin-bottom: 60px;
+      }
+
+      .top {
+        margin-bottom: 120px;
+
+        ul {
+          display: grid;
+          grid-template-columns: auto auto;
+          // row-gap: 80px;
+          // column-gap: 100px;
+          gap: 80px 100px;
+
+          li {
+            display: flex;
+            gap: 16px;
+
+            img {
+              width: 185px;
+              height: 225px;
+              object-fit: contain;
+            }
+
+            .content {
+              h3 {
+                font-size: 1.5rem;
+              }
+
+              .author {
+                margin: 18px 0;
+                opacity: 0.6;
+              }
+
+              .evaluations {
+                display: flex;
+                align-items: center;
+                gap: 23px;
+                margin-bottom: 13px;
+
+                .vote {
+                  text-wrap: nowrap;
+                  font-size: 14px;
+                  opacity: 0.4;
+                }
+              }
+
+              .desc {
+                opacity: 0.5;
+                line-height: 125%;
+              }
+            }
+          }
+        }
+      }
+
+      .bottom {
+        ul {
+          display: flex;
+          align-items: flex-start;
+          justify-content: space-between;
+          gap: 20px;
+          flex-wrap: wrap;
+
+          li {
+            img {
+              width: 200px;
+              height: 300px;
+              object-fit: contain;
+              margin-bottom: 25px;
+            }
+
+            h3 {
+              font-size: 1.4rem;
+              font-weight: 500;
+            }
+
+            .author {
+              margin: 12px 0;
+              opacity: 0.6;
+            }
+          }
+        }
+      }
+    }
+  }
+}

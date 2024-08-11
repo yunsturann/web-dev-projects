@@ -1,0 +1,62 @@
+@import "../../../styles/index.scss";
+
+.hero {
+  position: relative;
+  height: 613px;
+  display: flex;
+  align-items: center;
+
+  header {
+    width: 50%;
+    text-transform: uppercase;
+
+    h1 {
+      font-size: 4.7rem;
+      font-weight: bold;
+      line-height: 115%;
+    }
+
+    p {
+      font-size: 1.4rem;
+      letter-spacing: -1px;
+      margin: 16px 0 25px;
+    }
+
+    .search-book {
+      background-color: $main-gray;
+      padding: 18px 16px;
+      max-width: 406px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: text;
+
+      img {
+        width: 24px;
+        height: 24px;
+        object-fit: contain;
+      }
+
+      input {
+        flex: 1;
+        background-color: transparent;
+      }
+    }
+  }
+
+  .images {
+    img {
+      position: absolute;
+      object-fit: contain;
+      bottom: 0;
+
+      &#hero-bg {
+        right: 0;
+      }
+
+      &#hero-person {
+        right: 6%;
+      }
+    }
+  }
+}
